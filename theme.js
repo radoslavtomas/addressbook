@@ -16,6 +16,9 @@ const styles = {
       lineHeight: 'base',
       width: '100vw'
     },
+    a: {
+      color: mode('blue.500', 'blue.300')(props),
+    },
     '*::placeholder': {
       color: mode('gray.400', 'whiteAlpha.400')(props),
     },

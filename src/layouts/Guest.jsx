@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import ThemeToggleButton from '../components/ThemeToggleButton.jsx'
-import { Box, Flex, Image, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Image, useColorModeValue } from '@chakra-ui/react'
 import logo from '../assets/img/logo.png'
 import PropTypes from 'prop-types'
 import NavLink from '../components/NavLink/NavLink.jsx'
@@ -19,28 +19,26 @@ const Layout = ({ children }) => {
       exit="exit"
       variants={variants}
       transition={{ duration: 0.4, type: 'easeInOut' }}
-      style={{ position: 'relative', minHeight: '100vh' }}
+      style={{ position: 'relative' }}
     >
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" justifyContent={'space-between'} minHeight={'100vh'}>
 
-        <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} py={2}>
-          <Flex alignItems={'center'} justifyContent={'space-between'}>
-            <NavLink target="/">
-              <Image
-                boxSize="35px"
-                objectFit="cover"
-                src={logo}
-                alt="logo"
-              />
-            </NavLink>
-            <ThemeToggleButton/>
-          </Flex>
-        </Box>
+        <Flex bg={useColorModeValue('gray.100', 'gray.900')} px={4} py={2} alignItems={'center'}
+              justifyContent={'space-between'}>
+          <NavLink target="/">
+            <Image
+              boxSize="35px"
+              objectFit="cover"
+              src={logo}
+              alt="logo"
+            />
+          </NavLink>
+          <ThemeToggleButton/>
+        </Flex>
 
-        <Box flex="1">
+        <Flex flex={'1'} justifyContent={'center'} alignItems={'center'}>
           {children}
-        </Box>
-
+        </Flex>
       </Flex>
     </motion.div>
   )
