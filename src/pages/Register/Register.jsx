@@ -12,7 +12,7 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import Layout from '../../layouts/Guest.jsx'
 
-const Login = () => {
+const Register = () => {
 
   const isError = false
 
@@ -23,7 +23,7 @@ const Login = () => {
           <Box flexGrow={1}>
             <Center>
               <Heading as="h2" variant="page-title" textAlign="center">
-                Login
+                Register
               </Heading>
             </Center>
           </Box>
@@ -33,12 +33,20 @@ const Login = () => {
           <Box maxW="350px" mx="auto">
             <form>
               <FormControl mb={4} isRequired isInvalid={isError}>
+                <FormLabel htmlFor="email">Name</FormLabel>
+                <Input
+                  id="name"
+                  autoFocus
+                  type="name"
+                />
+                <FormErrorMessage>Email is required</FormErrorMessage>
+              </FormControl>
+
+              <FormControl mb={4} isRequired isInvalid={isError}>
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input
                   id="email"
-                  autoFocus
                   type="email"
-                  borderColor="blue.300"
                 />
                 <FormErrorMessage>Email is required</FormErrorMessage>
               </FormControl>
@@ -48,7 +56,6 @@ const Login = () => {
                 <Input
                   id="password"
                   type="password"
-                  borderColor="blue.300"
                 />
                 <FormErrorMessage>Password is required</FormErrorMessage>
               </FormControl>
@@ -60,7 +67,7 @@ const Login = () => {
                 variant="solid"
                 w="100%"
               >
-                Login
+                Register
               </Button>
             </form>
           </Box>
@@ -68,10 +75,10 @@ const Login = () => {
 
         <Box delay={0.2}>
           <Center textColor={'gray.500'} fontSize={'sm'} mb={1}>
-            <p>Don&apos;t have an account?</p>
+            <p>Already have an account?</p>
           </Center>
           <Center textTransform={'uppercase'}>
-            <a href={'#'}>Register here</a>
+            <a href={'/login'}>Login here</a>
           </Center>
         </Box>
       </Container>
@@ -79,4 +86,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
