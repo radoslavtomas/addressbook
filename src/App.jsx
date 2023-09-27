@@ -5,6 +5,8 @@ import Login from './pages/Login/Login.jsx'
 import Register from './pages/Register/Register.jsx'
 import Welcome from './pages/Welcome/Welcome.jsx'
 
+import '../i18n.js'
+
 import './App.css'
 
 // router and routes
