@@ -1,17 +1,19 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import Error from './pages/Error/Error.jsx'
 import Login from './pages/Login/Login.jsx'
 import Register from './pages/Register/Register.jsx'
-import Error from './pages/Error/Error.jsx'
+import Welcome from './pages/Welcome/Welcome.jsx'
 
 import './App.css'
 
 // router and routes
-const router = createBrowserRouter([{
-  path: '/',
-  element: <Login/>,
-  errorElement: <Error/>
-},
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Welcome/>,
+    errorElement: <Error/>
+  },
   {
     path: '/login',
     element: <Login/>
