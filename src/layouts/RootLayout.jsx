@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import ThemeToggleButton from '../components/ThemeToggleButton.jsx'
-import { Flex, Image, useColorModeValue } from '@chakra-ui/react'
+import { Flex, HStack, Image, useColorModeValue } from '@chakra-ui/react'
 import logo from '../assets/img/logo.png'
-import PropTypes from 'prop-types'
 import NavLink from '../components/NavLink/NavLink.jsx'
+import { Outlet } from 'react-router-dom'
+import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -11,7 +12,7 @@ const variants = {
   exit: { opacity: 0, x: -0, y: 20 }
 }
 
-const Layout = ({ children }) => {
+const RootLayout = () => {
   return (
     <motion.div
       initial="hidden"
@@ -33,19 +34,18 @@ const Layout = ({ children }) => {
               alt="logo"
             />
           </NavLink>
-          <ThemeToggleButton/>
+          <HStack>
+            <LanguageToggle/>
+            <ThemeToggleButton/>
+          </HStack>
         </Flex>
 
         <Flex flex={'1'} justifyContent={'center'} alignItems={'center'}>
-          {children}
+          <Outlet/>
         </Flex>
       </Flex>
     </motion.div>
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.any
-}
-
-export default Layout
+export default RootLayout

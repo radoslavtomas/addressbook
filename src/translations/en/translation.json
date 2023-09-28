@@ -1,3 +1,14 @@
 {
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "register": {
+    "name": "Register",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "registerButton": "Register",
+    "haveAccount": "Already have an account?",
+    "loginHere": "Login here"
+  }
 }

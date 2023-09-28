@@ -1,3 +1,14 @@
 {
-  "welcome": "Vitajte"
+  "welcome": "Vitajte",
+  "register": {
+    "name": "Zaregistrujte sa",
+    "form": {
+      "name": "Meno",
+      "email": "Email",
+      "password": "Heslo"
+    },
+    "registerButton": "Registruj",
+    "haveAccount": "Uz mate vytvoreny ucet?",
+    "loginHere": "Prihlaste sa tu"
+  }
 }
