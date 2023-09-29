@@ -1,20 +1,23 @@
 import { Select } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
-import { useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation()
-  const select = useRef()
+  const [language, setLanguage] = useState('en')
 
-  const changeLanguage = (lng) => {
-    console.log(select.current.value)
-    i18n.changeLanguage(select.current.value)
+  useEffect(() => {
+    setLanguage(i18n.language)
+  }, [i18n.language])
+
+  const changeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value)
   }
 
   return (
-    <Select ref={select} size="md" onChange={() => changeLanguage()}>
-      <option value="en">EN</option>
-      <option value="sk">SK</option>
+    <Select value={language} size="md" onChange={(event) => changeLanguage(event)}>
+      <option value="en">en</option>
+      <option value="sk">sk</option>
     </Select>
   )
 }
