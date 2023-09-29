@@ -9,6 +9,7 @@ import {
   Heading,
   Input
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 
@@ -17,7 +18,7 @@ const Register = () => {
   const isError = false
 
   return (
-    <Container maxW="container.md">
+    <Container maxW="container.md" pt={10}>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -32,7 +33,7 @@ const Register = () => {
         <Box maxW="350px" mx="auto">
           <form>
             <FormControl mb={4} isRequired isInvalid={isError}>
-              <FormLabel htmlFor="email">Name</FormLabel>
+              <FormLabel htmlFor="email">{t('register.form.name')}</FormLabel>
               <Input
                 id="name"
                 autoFocus
@@ -42,7 +43,7 @@ const Register = () => {
             </FormControl>
 
             <FormControl mb={4} isRequired isInvalid={isError}>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('register.form.email')}</FormLabel>
               <Input
                 id="email"
                 type="email"
@@ -51,7 +52,7 @@ const Register = () => {
             </FormControl>
 
             <FormControl mb={8} isRequired isInvalid={isError}>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">{t('register.form.password')}</FormLabel>
               <Input
                 id="password"
                 type="password"
@@ -66,7 +67,7 @@ const Register = () => {
               variant="solid"
               w="100%"
             >
-              Register
+              {t('register.registerButton')}
             </Button>
           </form>
         </Box>
@@ -74,10 +75,10 @@ const Register = () => {
 
       <Box delay={0.2}>
         <Center textColor={'gray.500'} fontSize={'sm'} mb={1}>
-          <p>Already have an account?</p>
+          <p>{t('register.haveAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <a href={'/login'}>Login here</a>
+          <Link to={'/ '}>{t('register.loginHere')}</Link>
         </Center>
       </Box>
     </Container>

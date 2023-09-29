@@ -7,8 +7,9 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
-  Input
+  Input,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 const Login = () => {
@@ -16,7 +17,7 @@ const Login = () => {
   const isError = false
 
   return (
-    <Container maxW="container.md">
+    <Container maxW="container.md" pt={10}>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -67,7 +68,7 @@ const Login = () => {
           <p>Don&apos;t have an account?</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <a href={'/register'}>Register here</a>
+          <Link to="/register">Register here</Link>
         </Center>
       </Box>
     </Container>

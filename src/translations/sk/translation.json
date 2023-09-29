@@ -1,4 +1,5 @@
 {
+  "siteTitle": "Adresár",
   "welcome": "Vitajte",
   "register": {
     "name": "Zaregistrujte sa",
@@ -7,8 +8,8 @@
       "email": "Email",
       "password": "Heslo"
     },
-    "registerButton": "Registruj",
-    "haveAccount": "Uz mate vytvoreny ucet?",
-    "loginHere": "Prihlaste sa tu"
+    "registerButton": "Vytvor účet",
+    "haveAccount": "Už máte vytvorený účet?",
+    "loginHere": "Prihláste sa tu"
   }
 }
