@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next'
 
 const Register = () => {
   const { t } = useTranslation()
-  const isError = false
+  const isError = true
 
   return (
     <Container maxW="container.md" pt={10}>
@@ -38,6 +38,9 @@ const Register = () => {
                 id="name"
                 autoFocus
                 type="name"
+                errorBorderColor="red.400"
+                focusBorderColor="gray.500"
+
               />
               <FormErrorMessage>Email is required</FormErrorMessage>
             </FormControl>
@@ -47,6 +50,8 @@ const Register = () => {
               <Input
                 id="email"
                 type="email"
+                errorBorderColor="red.400"
+                focusBorderColor="gray.500"
               />
               <FormErrorMessage>Email is required</FormErrorMessage>
             </FormControl>
@@ -56,6 +61,8 @@ const Register = () => {
               <Input
                 id="password"
                 type="password"
+                errorBorderColor="red.400"
+                focusBorderColor="gray.500"
               />
               <FormErrorMessage>Password is required</FormErrorMessage>
             </FormControl>
@@ -63,7 +70,7 @@ const Register = () => {
             <Button
               type="submit"
               rightIcon={<ChevronRightIcon/>}
-              colorScheme="blue"
+              colorScheme="orange"
               variant="solid"
               w="100%"
             >

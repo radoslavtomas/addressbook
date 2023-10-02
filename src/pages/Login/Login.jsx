@@ -37,6 +37,8 @@ const Login = () => {
                 id="email"
                 autoFocus
                 type="email"
+                errorBorderColor="red.400"
+                focusBorderColor="gray.500"
               />
               <FormErrorMessage>Email is required</FormErrorMessage>
             </FormControl>
@@ -46,6 +48,8 @@ const Login = () => {
               <Input
                 id="password"
                 type="password"
+                errorBorderColor="red.400"
+                focusBorderColor="gray.500"
               />
               <FormErrorMessage>Password is required</FormErrorMessage>
             </FormControl>
@@ -53,7 +57,7 @@ const Login = () => {
             <Button
               type="submit"
               rightIcon={<ChevronRightIcon/>}
-              colorScheme="blue"
+              colorScheme="orange"
               variant="solid"
               w="100%"
             >
