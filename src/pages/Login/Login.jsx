@@ -8,6 +8,8 @@ import {
   FormLabel,
   Heading,
   Input,
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
@@ -72,7 +74,7 @@ const Login = () => {
           <p>Don&apos;t have an account?</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to="/register">Register here</Link>
+          <Link to="/register"><Text color={useColorModeValue('orange.600', 'gray.400')}>Register here</Text></Link>
         </Center>
       </Box>
     </Container>
