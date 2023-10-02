@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 import ThemeToggleButton from '../components/ThemeToggleButton.jsx'
-import { Box, Flex, HStack, Image, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, HStack, Image, Show, Text, useColorModeValue } from '@chakra-ui/react'
 import { Link, Outlet } from 'react-router-dom'
 import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
 import { useTranslation } from 'react-i18next'
-import logo from './../assets/img/logo.png'
+import logo from './../assets/img/bear_logo.svg'
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -28,18 +28,20 @@ const RootLayout = () => {
         <Flex as={'header'} h={'3.5em'} bg={useColorModeValue('gray.200', 'gray.900')} px={4} py={2}
               alignItems={'center'}
               justifyContent={'space-between'}>
-          <HStack>
-            <Image
-              boxSize="35px"
-              objectFit="cover"
-              src={logo}
-              alt="logo"
-            />
-            <Link to="/">
-
-              <Text as={'span'} fontFamily={'Lobster'} fontSize={'1.6em'}>{t('siteTitle')}</Text>
-            </Link>
-          </HStack>
+          <Link to="/">
+            <HStack>
+              <Image
+                boxSize="53px"
+                objectFit="cover"
+                src={logo}
+                alt="logo"
+              />
+              <Show above="sm">
+                <Text as={'span'} fontFamily={'Lobster'} color={useColorModeValue('orange.500', 'orange.300')}
+                      fontSize={'1.6em'}>{t('siteTitle')}</Text>
+              </Show>
+            </HStack>
+          </Link>
 
           <HStack>
             <LanguageToggle/>

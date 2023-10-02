@@ -15,9 +15,9 @@ const styles = {
       bg: mode('white', 'gray.800')(props),
       lineHeight: 'base'
     },
-    a: {
-      color: mode('blue.500', 'blue.300')(props),
-    },
+    // a: {
+    //   color: mode('blue.500', 'blue.300')(props),
+    // },
     '*::placeholder': {
       color: mode('gray.400', 'whiteAlpha.400')(props),
     },
