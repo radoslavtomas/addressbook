@@ -7,12 +7,14 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
+  Image,
   Input,
   Text,
   useColorModeValue
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import NotebookImg from '../../assets/img/notebook.svg'
 
 const Login = () => {
 
@@ -20,6 +22,13 @@ const Login = () => {
 
   return (
     <Container maxW="container.md" pt={10}>
+      <Center>
+        <Text fontFamily={'Lato'}>Bear address is a simple way to create an online address book with friends and
+          family.</Text>
+      </Center>
+      <Center>
+        <Image w={'xs'} src={NotebookImg} alt="Notebook image"/>
+      </Center>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -77,6 +86,8 @@ const Login = () => {
           <Link to="/register"><Text color={useColorModeValue('orange.600', 'gray.400')}>Register here</Text></Link>
         </Center>
       </Box>
+
+      <a href="https://storyset.com/work">Work illustrations by Storyset</a>
     </Container>
   )
 }
