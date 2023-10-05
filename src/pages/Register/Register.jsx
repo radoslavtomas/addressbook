@@ -74,7 +74,7 @@ const Register = () => {
               variant="solid"
               w="100%"
             >
-              {t('register.registerButton')}
+              {t('registerButton')}
             </Button>
           </form>
         </Box>
@@ -85,7 +85,7 @@ const Register = () => {
           <p>{t('register.haveAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to={'/ '}>{t('register.loginHere')}</Link>
+          <Link to={'/login'}>{t('register.loginHere')}</Link>
         </Center>
       </Box>
     </Container>

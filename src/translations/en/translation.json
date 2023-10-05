@@ -1,9 +1,11 @@
 {
   "siteTitle": "Bear Address",
   "index": {
-    "heroMessage": "Bear address is a simple way to create an online address book with friends and family"
+    "heroMessage": "Modern address book for online era to help you stay in touch with friends and family"
   },
   "welcome": "Welcome",
+  "registerButton": "Register",
+  "loginButton": "Login",
   "register": {
     "name": "Register",
     "form": {
@@ -11,7 +13,6 @@
       "email": "Email",
       "password": "Password"
     },
-    "registerButton": "Register",
     "haveAccount": "Already have an account?",
     "loginHere": "Login here"
   }

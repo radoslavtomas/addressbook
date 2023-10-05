@@ -1,9 +1,11 @@
 {
   "siteTitle": "Macove adresy",
   "index": {
-    "heroMessage": "Macove adresy sú jednoduchý spôsob, ako si vytvoriť adresár s priateľmi a rodinou"
+    "heroMessage": "Moderný adresár, ktorý Vám pomôže zostať v kontakte s priateľmi a rodinou"
   },
   "welcome": "Vitajte",
+  "registerButton": "Vytvor účet",
+  "loginButton": "Prihlás sa",
   "register": {
     "name": "Zaregistrujte sa",
     "form": {
@@ -11,7 +13,6 @@
       "email": "Email",
       "password": "Heslo"
     },
-    "registerButton": "Vytvor účet",
     "haveAccount": "Už máte vytvorený účet?",
     "loginHere": "Prihláste sa tu"
   }

@@ -1,23 +1,35 @@
 import { useTranslation } from 'react-i18next'
-import { Button, Center, Container, Flex, Image, Text } from '@chakra-ui/react'
+import { Button, Center, Container, Flex, Heading, Image, useColorModeValue } from '@chakra-ui/react'
 import NotebookImg from '../../assets/img/notebook.svg'
+import { EmailIcon, UnlockIcon } from '@chakra-ui/icons'
+import { Link } from 'react-router-dom'
 
 const Welcome = () => {
 
   const { t } = useTranslation()
 
   return (
-    <Container maxW="container.lg" pt={10}>
-      <Flex>
-        <Flex direction="column" justifyContent="center">
-          <Text fontSize="xx-large" fontWeight="bold" fontFamily={'Lato'}>{t('index.heroMessage')}</Text>
-          <Flex>
-            <Button>Login</Button>
-            <Button>Register</Button>
+    <Container maxW="container.lg" px={{ base: '8', lg: '4' }}>
+      <Center display={{ base: 'flex', sm: 'none' }}>
+        <Heading as="h2" pt="4" fontFamily="Lobster" color={useColorModeValue('orange.500', 'orange.300')}
+                 size="xl">{t('siteTitle')}</Heading>
+      </Center>
+      <Flex direction={{ base: 'column-reverse', lg: 'row' }} justifyContent={{ base: 'start', lg: 'center' }}
+            alignItems="center"
+            minHeight={'calc(100vh - 3.5em)'}>
+        <Flex gap="8" flex={{ lg: '2 1 0' }} direction="column" justifyContent="center">
+          <Heading as="h1" size={{ base: 'xl', lg: '2xl' }} fontWeight="bold">{t('index.heroMessage')}</Heading>
+          <Flex gap="6" justifyContent={{ base: 'center', lg: 'start' }}>
+            <Button rightIcon={<UnlockIcon/>} colorScheme="blue">
+              <Link to={'/login'}>{t('loginButton')}</Link>
+            </Button>
+            <Button rightIcon={<EmailIcon/>} colorScheme="green">
+              <Link to={'/register'}>{t('registerButton')}</Link>
+            </Button>
           </Flex>
         </Flex>
-        <Center>
-          <Image w={'xs'} src={NotebookImg} alt="Notebook image"/>
+        <Center flex={{ lg: '1 1 0' }}>
+          <Image w={{ base: '250px', sm: 'xs' }} src={NotebookImg} alt="Notebook image"/>
         </Center>
       </Flex>
 
