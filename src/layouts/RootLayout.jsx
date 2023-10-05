@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import ThemeToggleButton from '../components/ThemeToggleButton.jsx'
 import { Box, Flex, HStack, Image, Show, Text, useColorModeValue } from '@chakra-ui/react'
 import { Link, Outlet } from 'react-router-dom'
+import ThemeToggleButton from '../components/ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
+import NavigationDrawer from '../components/NavigationDrawer/NavigationDrawer.jsx'
 import { useTranslation } from 'react-i18next'
 import logo from './../assets/img/bear_logo.svg'
 
@@ -48,6 +49,7 @@ const RootLayout = () => {
           <HStack>
             <LanguageToggle/>
             <ThemeToggleButton/>
+            <NavigationDrawer/>
           </HStack>
         </Flex>
 
