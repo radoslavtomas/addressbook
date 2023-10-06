@@ -14,10 +14,26 @@ import {
 import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 const Login = () => {
   const { t } = useTranslation()
   const isError = false
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email('Invalid email address').required('Email is required'),
+      password: Yup.string().required('Password is required')
+    }),
+    onSubmit: values => {
+      console.log(values)
+    }
+  })
 
   return (
     <Container maxW="container.md" pt={10}>
@@ -33,8 +49,8 @@ const Login = () => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-          <form>
-            <FormControl mb={4} isRequired isInvalid={isError}>
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl mb={4} isInvalid={isError}>
               <FormLabel htmlFor="email">{t('login.form.email')}</FormLabel>
               <Input
                 id="email"
@@ -42,17 +58,28 @@ const Login = () => {
                 type="email"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
               />
-              <FormErrorMessage>Email is required</FormErrorMessage>
+              <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
+
             </FormControl>
 
-            <FormControl mb={8} isRequired isInvalid={isError}>
+            <FormControl mb={8} isInvalid={isError}>
               <FormLabel htmlFor="password">{t('login.form.password')}</FormLabel>
               <Input
                 id="password"
                 type="password"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
               />
               <FormErrorMessage>Password is required</FormErrorMessage>
             </FormControl>
