@@ -65,7 +65,7 @@ const NavigationDrawer = () => {
           </DrawerBody>
 
           <DrawerFooter justifyContent="start">
-            <Button colorScheme="red" rightIcon={<LockIcon/>}>Logout</Button>
+            <Button colorScheme="red" rightIcon={<LockIcon/>}>{t('logoutButton')}</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

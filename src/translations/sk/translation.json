@@ -1,19 +1,33 @@
 {
   "siteTitle": "Macove adresy",
-  "index": {
-    "heroMessage": "Moderný adresár, ktorý Vám pomôže zostať v kontakte s priateľmi a rodinou"
-  },
-  "welcome": "Vitajte",
-  "registerButton": "Vytvor účet",
   "loginButton": "Prihlás sa",
+  "registerButton": "Zaregistruj sa",
+  "logoutButton": "Odhlásiť",
+  "navigation": {
+    "contacts": "Kontakty",
+    "addContact": "Pridaj kontakt",
+    "profile": "Profil"
+  },
+  "index": {
+    "heroMessage": "Moderný adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou"
+  },
   "register": {
-    "name": "Zaregistrujte sa",
+    "name": "Registrácia",
     "form": {
       "name": "Meno",
       "email": "Email",
       "password": "Heslo"
     },
-    "haveAccount": "Už máte vytvorený účet?",
-    "loginHere": "Prihláste sa tu"
+    "haveAccount": "Už máš vytvorený účet?",
+    "loginHere": "Prihlás sa tu"
+  },
+  "login": {
+    "name": "Prihlásenie",
+    "form": {
+      "email": "Email",
+      "password": "Heslo"
+    },
+    "noAccount": "Nemáš účet?",
+    "registerHere": "Zaregistruj sa tu"
   }
 }

@@ -1,11 +1,16 @@
 {
   "siteTitle": "Bear Address",
+  "loginButton": "Login",
+  "registerButton": "Register",
+  "logoutButton": "Logout",
+  "navigation": {
+    "contacts": "Contacts",
+    "addContact": "Add contact",
+    "profile": "Profile"
+  },
   "index": {
     "heroMessage": "Modern address book for online era to help you stay in touch with friends and family"
   },
-  "welcome": "Welcome",
-  "registerButton": "Register",
-  "loginButton": "Login",
   "register": {
     "name": "Register",
     "form": {
@@ -15,5 +20,14 @@
     },
     "haveAccount": "Already have an account?",
     "loginHere": "Login here"
+  },
+  "login": {
+    "name": "Login",
+    "form": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "noAccount": "Don't have an account?",
+    "registerHere": "Register here"
   }
 }

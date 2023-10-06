@@ -13,9 +13,10 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
-
+  const { t } = useTranslation()
   const isError = false
 
   return (
@@ -24,7 +25,7 @@ const Login = () => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              Login
+              {t('login.name')}
             </Heading>
           </Center>
         </Box>
@@ -34,7 +35,7 @@ const Login = () => {
         <Box maxW="350px" mx="auto">
           <form>
             <FormControl mb={4} isRequired isInvalid={isError}>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormLabel htmlFor="email">{t('login.form.email')}</FormLabel>
               <Input
                 id="email"
                 autoFocus
@@ -46,7 +47,7 @@ const Login = () => {
             </FormControl>
 
             <FormControl mb={8} isRequired isInvalid={isError}>
-              <FormLabel htmlFor="password">Password</FormLabel>
+              <FormLabel htmlFor="password">{t('login.form.password')}</FormLabel>
               <Input
                 id="password"
                 type="password"
@@ -63,7 +64,7 @@ const Login = () => {
               variant="solid"
               w="100%"
             >
-              Login
+              {t('loginButton')}
             </Button>
           </form>
         </Box>
@@ -71,10 +72,11 @@ const Login = () => {
 
       <Box delay={0.2}>
         <Center textColor={'gray.500'} fontSize={'sm'} mb={1}>
-          <p>Don&apos;t have an account?</p>
+          <p>{t('login.noAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to="/register"><Text color={useColorModeValue('orange.600', 'gray.400')}>Register here</Text></Link>
+          <Link to="/register"><Text
+            color={useColorModeValue('orange.600', 'gray.400')}>{t('login.registerHere')}</Text></Link>
         </Center>
       </Box>
 

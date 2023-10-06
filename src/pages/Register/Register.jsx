@@ -7,7 +7,9 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
-  Input
+  Input,
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { ChevronRightIcon } from '@chakra-ui/icons'
@@ -85,7 +87,7 @@ const Register = () => {
           <p>{t('register.haveAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to={'/login'}>{t('register.loginHere')}</Link>
+          <Link to={'/login'}><Text color={useColorModeValue('orange.600', 'gray.400')}>{t('register.loginHere')}</Text></Link>
         </Center>
       </Box>
     </Container>

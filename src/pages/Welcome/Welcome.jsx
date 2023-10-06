@@ -5,7 +5,6 @@ import { EmailIcon, UnlockIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 
 const Welcome = () => {
-
   const { t } = useTranslation()
 
   return (
