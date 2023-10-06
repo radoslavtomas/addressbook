@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-import { Box, Flex, HStack, Image, Show, Text, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, HStack, useColorModeValue } from '@chakra-ui/react'
 import { Link, Outlet } from 'react-router-dom'
+import SiteLogo from '../components/SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../components/ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawer from '../components/NavigationDrawer/NavigationDrawer.jsx'
-import { useTranslation } from 'react-i18next'
-import logo from './../assets/img/bear_logo.svg'
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -14,8 +13,6 @@ const variants = {
 }
 
 const RootLayout = () => {
-  const { t } = useTranslation()
-
   return (
     <motion.div
       initial="hidden"
@@ -31,19 +28,7 @@ const RootLayout = () => {
               alignItems={'center'}
               justifyContent={'space-between'}>
           <Link to="/">
-            <HStack>
-              <Image
-                boxSize="53px"
-                objectFit="cover"
-                src={logo}
-                alt="logo"
-              />
-              <Show above="sm">
-                <Text as={'span'} fontFamily={'Lobster'} color={useColorModeValue('orange.500', 'orange.300')}
-                      _hover={{ color: useColorModeValue('orange.600', 'orange.400') }}
-                      fontSize={'1.6em'}>{t('siteTitle')}</Text>
-              </Show>
-            </HStack>
+            <SiteLogo/>
           </Link>
 
           <HStack>

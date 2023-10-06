@@ -7,20 +7,17 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  Heading,
   HStack,
   IconButton,
-  Image,
   useColorModeValue,
   useDisclosure,
   VStack
 } from '@chakra-ui/react'
 import { HamburgerIcon, LockIcon } from '@chakra-ui/icons'
-
+import SiteLogo from '../SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawerList from './NaviagtionDrawerList.jsx'
-import logo from '../../assets/img/bear_logo.svg'
 import { useTranslation } from 'react-i18next'
 
 const NavigationDrawer = () => {
@@ -38,21 +35,7 @@ const NavigationDrawer = () => {
         <DrawerContent>
           <DrawerCloseButton/>
           <DrawerHeader borderBottomWidth="1px">
-            <HStack>
-              <Image
-                boxSize="2.5em"
-                objectFit="cover"
-                src={logo}
-                alt="logo"
-              />
-              <Heading
-                as="h1"
-                fontFamily={'Lobster'}
-                color={useColorModeValue('orange.500', 'orange.300')}
-                size={'lg'}
-
-              >{t('siteTitle')}</Heading>
-            </HStack>
+            <SiteLogo/>
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={10} alignItems="start">
