@@ -4,13 +4,13 @@ import { NavLink } from 'react-router-dom'
 import { EmailIcon, PlusSquareIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 
-const NavigationDrawerList = () => {
+const NavigationDrawerList = (props) => {
   const { t } = useTranslation()
 
   return (
     <List spacing={4} mt={4}>
       <ListItem>
-        <NavLink to="/contacts">
+        <NavLink to="/contacts" onClick={props.onClose}>
           <Flex alignItems="center">
             <ListIcon as={EmailIcon}/>
             {t('navigation.contacts')}

@@ -39,7 +39,7 @@ const NavigationDrawer = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack spacing={10} alignItems="start">
-              <NavigationDrawerList/>
+              <NavigationDrawerList onClose={onClose}/>
               <HStack spacing={3}>
                 <LanguageToggle/>
                 <ThemeToggleButton/>
