@@ -28,6 +28,30 @@
       "password": "Heslo"
     },
     "noAccount": "Nemáš účet?",
-    "registerHere": "Zaregistruj sa tu"
+    "registerHere": "Zaregistruj sa",
+    "forgotPassword": "Zabudnuté heslo?",
+    "resetHere": "Zmeň si ho"
+  },
+  "passwordReset": {
+    "name": "Zmeniť zabudnuté heslo",
+    "form": {
+      "email": "Email"
+    },
+    "resetButton": "Zmeň heslo",
+    "backToLogin": "Späť na prihlásenie"
+  },
+  "validation": {
+    "name": {
+      "required": "Meno je povinný údaj",
+      "min": "Meno musí obsahovať aspoň dva znaky"
+    },
+    "email": {
+      "required": "Email je povinný údaj",
+      "invalidFormat": "Neplatná emailová adresa"
+    },
+    "password": {
+      "required": "Heslo je povinný údaj",
+      "min": "Heslo musí obsahovať aspoň 6 znakov"
+    }
   }
 }

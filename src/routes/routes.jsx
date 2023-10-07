@@ -3,6 +3,7 @@ import Error from '../pages/Error/Error.jsx'
 import Login from '../pages/Login/Login.jsx'
 import Register from '../pages/Register/Register.jsx'
 import Welcome from '../pages/Welcome/Welcome.jsx'
+import PasswordReset from '../pages/PasswordReset/PasswordReset.jsx'
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
       {
         path: '/register',
         element: <Register/>
+      },
+      {
+        path: '/reset-password',
+        element: <PasswordReset/>
       }
     ]
   },

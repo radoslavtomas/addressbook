@@ -28,6 +28,30 @@
       "password": "Password"
     },
     "noAccount": "Don't have an account?",
-    "registerHere": "Register here"
+    "registerHere": "Register here",
+    "forgotPassword": "Forgot your password?",
+    "resetHere": "Reset it here"
+  },
+  "passwordReset": {
+    "name": "Reset your password",
+    "form": {
+      "email": "Email"
+    },
+    "resetButton": "Reset password",
+    "backToLogin": "Back to Login"
+  },
+  "validation": {
+    "name": {
+      "required": "Name is required",
+      "min": "Name must be at least 2 characters long"
+    },
+    "email": {
+      "required": "Email is required",
+      "invalidFormat": "Invalid email address"
+    },
+    "password": {
+      "required": "Password is required",
+      "min": "Password must be at least 6 characters long"
+    }
   }
 }
