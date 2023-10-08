@@ -6,6 +6,7 @@ import Welcome from '../pages/Welcome/Welcome.jsx'
 import PasswordReset from '../pages/PasswordReset/PasswordReset.jsx'
 import Contacts from '../pages/Contacts/Contacts.jsx'
 import AddContact from '../pages/AddContact/AddContact.jsx'
+import AddAddress from '../pages/AddAddress/AddAddress.jsx'
 
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
       {
         path: '/add-contact',
         element: <AddContact/>
+      },
+      {
+        path: '/add-address',
+        element: <AddAddress/>
       }
     ]
   },

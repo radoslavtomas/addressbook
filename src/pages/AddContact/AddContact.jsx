@@ -41,7 +41,7 @@ const AddContact = () => {
   })
 
   return (
-    <Container maxW="container.md" pt={10}>
+    <Container maxW="container.md" py={10}>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -89,7 +89,7 @@ const AddContact = () => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.dateOfBirth && formik.errors.dateOfBirth}>
+            <FormControl mb={4} isInvalid={formik.touched.dateOfBirth && formik.errors.dateOfBirth}>
               <FormLabel htmlFor="dateOfBirth">{t('addContact.form.dateOfBirth')}</FormLabel>
               <Input
                 id="dateOfBirth"
@@ -106,7 +106,7 @@ const AddContact = () => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.phone && formik.errors.phone}>
+            <FormControl mb={4} isInvalid={formik.touched.phone && formik.errors.phone}>
               <FormLabel htmlFor="phone">{t('addContact.form.phone')}</FormLabel>
               <Input
                 id="phone"
@@ -123,7 +123,7 @@ const AddContact = () => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.email && formik.errors.email}>
+            <FormControl mb={4} isInvalid={formik.touched.email && formik.errors.email}>
               <FormLabel htmlFor="email">{t('addContact.form.email')}</FormLabel>
               <Input
                 id="email"

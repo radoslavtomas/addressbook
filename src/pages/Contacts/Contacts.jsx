@@ -23,6 +23,7 @@ import {
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon, EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useRef } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Contacts = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -86,7 +87,9 @@ const Contacts = () => {
               <Box py={6}>
                 <Flex justifyContent="center" direction={{ base: 'column-reverse', sm: 'row' }} gap={4}>
                   <Button colorScheme="orange" rightIcon={<SettingsIcon/>}>Manage contact</Button>
-                  <Button colorScheme="green" rightIcon={<EmailIcon/>}>Add new address</Button>
+                  <NavLink to="/add-address">
+                    <Button colorScheme="green" rightIcon={<EmailIcon/>}>Add new address</Button>
+                  </NavLink>
                 </Flex>
               </Box>s
             </Stack>

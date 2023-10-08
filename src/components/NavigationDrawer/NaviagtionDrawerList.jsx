@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { EmailIcon, PlusSquareIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 
+// eslint-disable-next-line react/prop-types
 const NavigationDrawerList = ({ onClose }) => {
   const { t } = useTranslation()
 
