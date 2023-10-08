@@ -40,6 +40,18 @@
     "resetButton": "Reset password",
     "backToLogin": "Back to Login"
   },
+  "addContact": {
+    "name": "Add contact",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateOfBirth": "Date Of Birth",
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "addContactButton": "Add contact",
+    "backToContacts": "Back to contacts"
+  },
   "validation": {
     "name": {
       "required": "Name is required",

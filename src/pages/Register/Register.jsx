@@ -52,11 +52,10 @@ const Register = () => {
         <Box maxW="350px" mx="auto">
           <form>
             <FormControl mb={4} isRequired isInvalid={formik.touched.name && formik.errors.name}>
-              <FormLabel htmlFor="email">{t('register.form.name')}</FormLabel>
+              <FormLabel htmlFor="name">{t('register.form.name')}</FormLabel>
               <Input
                 id="name"
-                autoFocus
-                type="name"
+                type="text"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
                 onChange={formik.handleChange}

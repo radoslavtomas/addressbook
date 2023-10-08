@@ -40,6 +40,18 @@
     "resetButton": "Zmeň heslo",
     "backToLogin": "Späť na prihlásenie"
   },
+  "addContact": {
+    "name": "Pridaj kontakt",
+    "form": {
+      "firstName": "Meno",
+      "lastName": "Priezvisko",
+      "dateOfBirth": "Dátum narodenia",
+      "phone": "Telefón",
+      "email": "Email"
+    },
+    "addContactButton": "Pridaj kontakt",
+    "backToContacts": "Späť na kontakty"
+  },
   "validation": {
     "name": {
       "required": "Meno je povinný údaj",

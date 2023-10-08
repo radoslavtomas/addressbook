@@ -4,6 +4,12 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
   Box,
   Button,
   Container,
@@ -12,11 +18,16 @@ import {
   HStack,
   Stack,
   StackDivider,
-  Text
+  Text,
+  useDisclosure
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon, EmailIcon, SettingsIcon } from '@chakra-ui/icons'
+import { useRef } from 'react'
 
 const Contacts = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = useRef()
+
   return (
     <Container maxW="container.md" pt={10}>
       <Accordion allowToggle>
@@ -32,15 +43,42 @@ const Contacts = () => {
           <AccordionPanel pb={4}>
             <Stack divider={<StackDivider/>} spacing={4}>
               <Box>
+                <AlertDialog
+                  isOpen={isOpen}
+                  leastDestructiveRef={cancelRef}
+                  onClose={onClose}
+                >
+                  <AlertDialogOverlay>
+                    <AlertDialogContent>
+                      <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                        Delete address for Circ
+                      </AlertDialogHeader>
+
+                      <AlertDialogBody>
+                        Are you sure? You cannot undo this action afterwards.
+                      </AlertDialogBody>
+
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          Cancel
+                        </Button>
+                        <Button colorScheme="red" onClick={onClose} ml={3}>
+                          Delete
+                        </Button>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialogOverlay>
+                </AlertDialog>
+
                 <Heading size="xs" textTransform="uppercase">
-                  Circ
+                  Address for Circ
                 </Heading>
                 <Text pt="2" fontSize="sm">Circ 212</Text>
                 <Text pt="2" fontSize="sm">Circ</Text>
                 <Text pt="2" fontSize="sm">097 11</Text>
                 <Text pt="2" fontSize="sm">Slovakia</Text>
-                <HStack justifyContent="end" spacing={4}>
-                  <Button colorScheme="red" size="sm" rightIcon={<DeleteIcon/>}>Delete</Button>
+                <HStack justifyContent="end" spacing={4} mt={4}>
+                  <Button onClick={onOpen} colorScheme="red" size="sm" rightIcon={<DeleteIcon/>}>Delete</Button>
                   <Button colorScheme="blue" size="sm" rightIcon={<EditIcon/>}>Edit Address</Button>
                 </HStack>
               </Box>
@@ -73,13 +111,13 @@ const Contacts = () => {
               </Box>
               <Box>
                 <Heading size="xs" textTransform="uppercase">
-                  Velke Ulany
+                  Address for Velke Ulany
                 </Heading>
                 <Text pt="2" fontSize="sm">Ulica 1. maja</Text>
                 <Text pt="2" fontSize="sm">Velke Ulany</Text>
                 <Text pt="2" fontSize="sm">097 11</Text>
                 <Text pt="2" fontSize="sm">Slovakia</Text>
-                <HStack justifyContent="end" spacing={4}>
+                <HStack justifyContent="end" spacing={4} mt={4}>
                   <Button colorScheme="red" size="sm" rightIcon={<DeleteIcon/>}>Delete</Button>
                   <Button colorScheme="blue" size="sm" rightIcon={<EditIcon/>}>Edit</Button>
                 </HStack>
@@ -87,13 +125,13 @@ const Contacts = () => {
 
               <Box>
                 <Heading size="xs" textTransform="uppercase">
-                  Trnava
+                  Address for Trnava
                 </Heading>
                 <Text pt="2" fontSize="sm">Hospodarska 65</Text>
                 <Text pt="2" fontSize="sm">Trnava</Text>
                 <Text pt="2" fontSize="sm">097 11</Text>
                 <Text pt="2" fontSize="sm">Slovakia</Text>
-                <HStack justifyContent="end" spacing={4}>
+                <HStack justifyContent="end" spacing={4} mt={4}>
                   <Button colorScheme="red" size="sm" rightIcon={<DeleteIcon/>}>Delete</Button>
                   <Button colorScheme="blue" size="sm" rightIcon={<EditIcon/>}>Edit</Button>
                 </HStack>

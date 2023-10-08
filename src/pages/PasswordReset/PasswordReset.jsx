@@ -51,7 +51,6 @@ const PasswordReset = () => {
               <FormLabel htmlFor="email">{t('passwordReset.form.email')}</FormLabel>
               <Input
                 id="email"
-                autoFocus
                 type="email"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
