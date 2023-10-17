@@ -23,11 +23,12 @@ import {
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon, EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Contacts = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
+  let navigate = useNavigate()
 
   return (
     <Container maxW="container.md" pt={10}>
@@ -43,6 +44,12 @@ const Contacts = () => {
           </h2>
           <AccordionPanel pb={4}>
             <Stack divider={<StackDivider/>} spacing={4}>
+              <Box>
+                <Text pt="2" fontSize="sm">Date of birth: 15/06/1954</Text>
+                <Text pt="2" fontSize="sm">Email: atomas@gmail.com</Text>
+                <Text pt="2" fontSize="sm">Phone: 01612233445</Text>
+              </Box>
+
               <Box>
                 <AlertDialog
                   isOpen={isOpen}
@@ -78,20 +85,45 @@ const Contacts = () => {
                 <Text pt="2" fontSize="sm">Circ</Text>
                 <Text pt="2" fontSize="sm">097 11</Text>
                 <Text pt="2" fontSize="sm">Slovakia</Text>
-                <HStack justifyContent="end" spacing={4} mt={4}>
-                  <Button onClick={onOpen} colorScheme="red" size="sm" rightIcon={<DeleteIcon/>}>Delete</Button>
-                  <Button colorScheme="blue" size="sm" rightIcon={<EditIcon/>}>Edit Address</Button>
+                <HStack justifyContent="end" spacing={8} mt={4}>
+                  <Button
+                    onClick={onOpen}
+                    colorScheme="red"
+                    size="sm"
+                    variant="link"
+                    rightIcon={<DeleteIcon/>}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    colorScheme="blue"
+                    size="sm"
+                    variant="link"
+                    rightIcon={<EditIcon/>}
+                  >
+                    Edit Address
+                  </Button>
                 </HStack>
               </Box>
 
               <Box py={6}>
                 <Flex justifyContent="center" direction={{ base: 'column-reverse', sm: 'row' }} gap={4}>
-                  <Button colorScheme="orange" rightIcon={<SettingsIcon/>}>Manage contact</Button>
-                  <NavLink to="/add-address">
-                    <Button colorScheme="green" rightIcon={<EmailIcon/>}>Add new address</Button>
-                  </NavLink>
+                  <Button
+                    colorScheme="orange"
+                    rightIcon={<SettingsIcon/>}
+                    onClick={() => navigate('/add-address')}
+                  >
+                    Manage contact
+                  </Button>
+                  <Button
+                    colorScheme="green"
+                    rightIcon={<EmailIcon/>}
+                    onClick={() => navigate('/add-address')}
+                  >
+                    Add new address
+                  </Button>
                 </Flex>
-              </Box>s
+              </Box>
             </Stack>
           </AccordionPanel>
         </AccordionItem>
