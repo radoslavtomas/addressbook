@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next'
 import { Button, Center, Container, Flex, Heading, Image, useColorModeValue } from '@chakra-ui/react'
 import NotebookImg from '../../assets/img/notebook.svg'
 import { EmailIcon, UnlockIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Welcome = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
 
   return (
     <Container maxW="container.lg" px={{ base: '8', lg: '4' }}>
@@ -19,11 +20,11 @@ const Welcome = () => {
         <Flex gap="8" flex={{ lg: '2 1 0' }} direction="column" justifyContent="center">
           <Heading as="h1" size={{ base: 'xl', lg: '2xl' }} fontWeight="bold">{t('index.heroMessage')}</Heading>
           <Flex gap="6" justifyContent={{ base: 'center', lg: 'start' }}>
-            <Button rightIcon={<UnlockIcon/>} colorScheme="blue">
-              <Link to={'/login'}>{t('loginButton')}</Link>
+            <Button rightIcon={<UnlockIcon/>} colorScheme="blue" onClick={() => navigate('/login')}>
+              {t('loginButton')}
             </Button>
-            <Button rightIcon={<EmailIcon/>} colorScheme="green">
-              <Link to={'/register'}>{t('registerButton')}</Link>
+            <Button rightIcon={<EmailIcon/>} colorScheme="green" onClick={() => navigate('/register')}>
+              {t('registerButton')}
             </Button>
           </Flex>
         </Flex>
