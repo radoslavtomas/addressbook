@@ -68,6 +68,24 @@
     "editAddressButton": "Uprav adresu",
     "backToContacts": "Späť na kontakty"
   },
+  "profileForm": {
+    "name": "Účet",
+    "form": {
+      "name": "Meno",
+      "email": "Email"
+    },
+    "updateProfileButton": "Ulož zmeny",
+    "cancel": "Zrušiť"
+  },
+  "updatePasswordForm": {
+    "name": "Zmeň heslo",
+    "form": {
+      "currentPassword": "Aktuálne heslo",
+      "newPassword": "Nové heslo",
+      "confirmPassword": "Potvrď nové heslo"
+    },
+    "savePasswordButton": "Ulož heslo"
+  },
   "validation": {
     "name": {
       "required": "Meno je povinný údaj",

@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Center,
-  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -41,7 +40,7 @@ const ContactForm = () => {
   })
 
   return (
-    <Container maxW="container.md" py={10}>
+    <>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -158,7 +157,7 @@ const ContactForm = () => {
             color={useColorModeValue('orange.600', 'gray.400')}>{t('contactForm.backToContacts')}</Text></Link>
         </Center>
       </Box>
-    </Container>
+    </>
   )
 }
 

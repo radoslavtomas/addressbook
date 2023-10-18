@@ -5,7 +5,6 @@ import {
   Box,
   Button,
   Center,
-  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -35,7 +34,7 @@ const LoginForm = () => {
   })
 
   return (
-    <Container maxW="container.md" pt={10}>
+    <>
       <Box display={{ md: 'flex' }} mb={6}>
         <Box flexGrow={1}>
           <Center>
@@ -106,7 +105,7 @@ const LoginForm = () => {
       </Box>
 
       <a href="https://storyset.com/work">Work illustrations by Storyset</a>
-    </Container>
+    </>
   )
 }
 

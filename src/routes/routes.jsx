@@ -7,6 +7,7 @@ import PasswordReset from '../pages/PasswordReset/PasswordReset.jsx'
 import Contacts from '../pages/Contacts/Contacts.jsx'
 import AddContact from '../pages/AddContact/AddContact.jsx'
 import AddAddress from '../pages/AddAddress/AddAddress.jsx'
+import Profile from '../pages/Profile/Profile.jsx'
 
 const routes = [
   {
@@ -29,6 +30,10 @@ const routes = [
       {
         path: '/reset-password',
         element: <PasswordReset/>
+      },
+      {
+        path: '/profile',
+        element: <Profile/>
       },
       {
         path: '/contacts',

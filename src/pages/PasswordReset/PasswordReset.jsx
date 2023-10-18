@@ -1,8 +1,11 @@
 import PasswordResetForm from '../../components/Forms/PasswordResetForm.jsx'
+import { Container } from '@chakra-ui/react'
 
 const PasswordReset = () => {
   return (
-    <PasswordResetForm/>
+    <Container maxW="container.md" pt={10}>
+      <PasswordResetForm/>
+    </Container>
   )
 }
 

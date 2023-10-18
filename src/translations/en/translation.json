@@ -68,6 +68,24 @@
     "editAddressButton": "Edit address",
     "backToContacts": "Back to contacts"
   },
+  "profileForm": {
+    "name": "Profile",
+    "form": {
+      "name": "Name",
+      "email": "Email"
+    },
+    "updateProfileButton": "Update profile",
+    "cancel": "Cancel"
+  },
+  "updatePasswordForm": {
+    "name": "Update Password",
+    "form": {
+      "currentPassword": "Current password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm password"
+    },
+    "savePasswordButton": "Save password"
+  },
   "validation": {
     "name": {
       "required": "Name is required",
