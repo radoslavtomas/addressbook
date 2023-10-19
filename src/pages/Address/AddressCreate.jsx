@@ -1,12 +1,12 @@
 import AddressForm from '../../components/Forms/AddressForm.jsx'
 import { Container } from '@chakra-ui/react'
 
-const AddAddress = () => {
+const AddressCreate = () => {
   return (
     <Container maxW="container.md" pt={10}>
-      <AddressForm mode="add"/>
+      <AddressForm mode="create"/>
     </Container>
   )
 }
 
-export default AddAddress
+export default AddressCreate

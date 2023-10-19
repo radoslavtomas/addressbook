@@ -1,23 +1,13 @@
-import {
-  Box,
-  Button,
-  Center,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  Text,
-  useColorModeValue
-} from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
+import { Box, Button, Center, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react'
+import { ChevronRightIcon, EmailIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 
 const ProfileForm = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -91,14 +81,19 @@ const ProfileForm = () => {
               {t('profileForm.updateProfileButton')}
             </Button>
           </form>
-        </Box>
-      </Box>
 
-      <Box delay={0.2}>
-        <Center textTransform={'uppercase'}>
-          <Link to={'/login'}><Text
-            color={useColorModeValue('orange.600', 'gray.400')}>{t('profileForm.cancel')}</Text></Link>
-        </Center>
+          <Box mt={4}>
+            <Button
+              onClick={() => navigate('/contacts')}
+              rightIcon={<EmailIcon/>}
+              colorScheme="green"
+              variant="solid"
+              w="100%"
+            >
+              {t('profileForm.backToContacts')}
+            </Button>
+          </Box>
+        </Box>
       </Box>
     </>
   )

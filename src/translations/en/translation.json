@@ -41,7 +41,8 @@
     "backToLogin": "Back to Login"
   },
   "contactForm": {
-    "name": "Add contact",
+    "name_create": "Add contact",
+    "name_edit": "Edit contact",
     "form": {
       "firstName": "First Name",
       "lastName": "Last Name",
@@ -49,11 +50,12 @@
       "phone": "Phone",
       "email": "Email"
     },
-    "addContactButton": "Add contact",
+    "createContactButton": "Add contact",
+    "editContactButton": "Edit contact",
     "backToContacts": "Back to contacts"
   },
   "addressForm": {
-    "name_add": "Add address",
+    "name_create": "Add address",
     "name_edit": "Edit address",
     "form": {
       "address_line_1": "Address line",
@@ -64,7 +66,7 @@
       "country": "Country",
       "selectCountry": "Select country"
     },
-    "addAddressButton": "Add address",
+    "createAddressButton": "Add address",
     "editAddressButton": "Edit address",
     "backToContacts": "Back to contacts"
   },
@@ -75,6 +77,7 @@
       "email": "Email"
     },
     "updateProfileButton": "Update profile",
+    "backToContacts": "Back to contacts",
     "cancel": "Cancel"
   },
   "updatePasswordForm": {

@@ -5,9 +5,12 @@ import Register from '../pages/Register/Register.jsx'
 import Welcome from '../pages/Welcome/Welcome.jsx'
 import PasswordReset from '../pages/PasswordReset/PasswordReset.jsx'
 import Contacts from '../pages/Contacts/Contacts.jsx'
-import AddContact from '../pages/AddContact/AddContact.jsx'
-import AddAddress from '../pages/AddAddress/AddAddress.jsx'
+import ContactsCreate from '../pages/Contacts/ContactsCreate.jsx'
+import AddressCreate from '../pages/Address/AddressCreate.jsx'
 import Profile from '../pages/Profile/Profile.jsx'
+import UpdatePassword from '../pages/UpdatePassword/UpdatePassword.jsx'
+import ContactsEdit from '../pages/Contacts/ContactsEdit.jsx'
+import AddressEdit from '../pages/Address/AddressEdit.jsx'
 
 const routes = [
   {
@@ -28,24 +31,36 @@ const routes = [
         element: <Register/>
       },
       {
-        path: '/reset-password',
-        element: <PasswordReset/>
-      },
-      {
         path: '/profile',
         element: <Profile/>
+      },
+      {
+        path: '/update-password',
+        element: <UpdatePassword/>
+      },
+      {
+        path: '/reset-password',
+        element: <PasswordReset/>
       },
       {
         path: '/contacts',
         element: <Contacts/>
       },
       {
-        path: '/add-contact',
-        element: <AddContact/>
+        path: '/contacts/create',
+        element: <ContactsCreate/>
       },
       {
-        path: '/add-address',
-        element: <AddAddress/>
+        path: '/contacts/:contactId/edit',
+        element: <ContactsEdit/>
+      },
+      {
+        path: '/address/create',
+        element: <AddressCreate/>
+      },
+      {
+        path: '/address/:addressId/edit',
+        element: <AddressEdit/>
       }
     ]
   },

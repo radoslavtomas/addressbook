@@ -13,11 +13,13 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 
 const ContactItemAddress = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
+  const navigate = useNavigate()
 
   return (
     <Box>
@@ -70,6 +72,7 @@ const ContactItemAddress = () => {
           size="sm"
           variant="link"
           rightIcon={<EditIcon/>}
+          onClick={() => navigate('/address/1/edit')}
         >
           Edit Address
         </Button>

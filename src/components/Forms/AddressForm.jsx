@@ -17,14 +17,16 @@ import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const AddressForm = (props) => {
   const { t, i18n } = useTranslation()
+  const { addressId } = useParams()
 
   useEffect(() => {
     console.log(props.mode)
+    console.log(addressId)
   }, [])
 
   const formik = useFormik({
@@ -81,7 +83,7 @@ const AddressForm = (props) => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.address_line_2 && formik.errors.address_line_2}>
+            <FormControl mb={4} isInvalid={formik.touched.address_line_2 && formik.errors.address_line_2}>
               <FormLabel htmlFor="address_line_2">{t('addressForm.form.address_line_2')}</FormLabel>
               <Input
                 id="address_line_2"
@@ -98,7 +100,7 @@ const AddressForm = (props) => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.address_line_3 && formik.errors.address_line_3}>
+            <FormControl mb={4} isInvalid={formik.touched.address_line_3 && formik.errors.address_line_3}>
               <FormLabel htmlFor="address_line_3">{t('addressForm.form.address_line_3')}</FormLabel>
               <Input
                 id="address_line_3"
@@ -149,7 +151,7 @@ const AddressForm = (props) => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isInvalid={formik.touched.country && formik.errors.country}>
+            <FormControl mb={4} isRequired isInvalid={formik.touched.country && formik.errors.country}>
               <FormLabel htmlFor="country">{t('addressForm.form.country')}</FormLabel>
               <Select
                 placeholder={t('addressForm.form.selectCountry')}
@@ -187,7 +189,7 @@ const AddressForm = (props) => {
       <Box delay={0.2}>
         <Center textTransform={'uppercase'}>
           <Link to={'/contacts'}><Text
-            color={useColorModeValue('orange.600', 'gray.400')}>{t('addContact.backToContacts')}</Text></Link>
+            color={useColorModeValue('orange.600', 'gray.400')}>{t('addressForm.backToContacts')}</Text></Link>
         </Center>
       </Box>
     </>
@@ -195,7 +197,7 @@ const AddressForm = (props) => {
 }
 
 AddressForm.propTypes = {
-  mode: PropTypes.oneOf(['add', 'edit']).isRequired
+  mode: PropTypes.oneOf(['create', 'edit']).isRequired
 }
 
 export default AddressForm

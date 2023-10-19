@@ -41,7 +41,8 @@
     "backToLogin": "Späť na prihlásenie"
   },
   "contactForm": {
-    "name": "Pridaj kontakt",
+    "name_create": "Pridaj kontakt",
+    "name_edit": "Uprav kontakt",
     "form": {
       "firstName": "Meno",
       "lastName": "Priezvisko",
@@ -49,11 +50,12 @@
       "phone": "Telefón",
       "email": "Email"
     },
-    "addContactButton": "Pridaj kontakt",
+    "createContactButton": "Pridaj kontakt",
+    "editContactButton": "Uprav kontakt",
     "backToContacts": "Späť na kontakty"
   },
   "addressForm": {
-    "name_add": "Pridaj adresu",
+    "name_create": "Pridaj adresu",
     "name_edit": "Uprav adresu",
     "form": {
       "address_line_1": "Ulica",
@@ -64,7 +66,7 @@
       "country": "Krajina",
       "selectCountry": "Vyber krajinu"
     },
-    "addAddressButton": "Pridaj adresu",
+    "createAddressButton": "Pridaj adresu",
     "editAddressButton": "Uprav adresu",
     "backToContacts": "Späť na kontakty"
   },
@@ -75,6 +77,7 @@
       "email": "Email"
     },
     "updateProfileButton": "Ulož zmeny",
+    "backToContacts": "späť na kontakty",
     "cancel": "Zrušiť"
   },
   "updatePasswordForm": {

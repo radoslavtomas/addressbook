@@ -19,7 +19,7 @@ const NavigationDrawerList = ({ onClose }) => {
         </NavLink>
       </ListItem>
       <ListItem>
-        <NavLink to="/add-contact" onClick={onClose}>
+        <NavLink to="/contacts/create" onClick={onClose}>
           <Flex alignItems="center">
             <ListIcon as={PlusSquareIcon}/>
             {t('navigation.addContact')}

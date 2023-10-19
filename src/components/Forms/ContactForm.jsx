@@ -14,10 +14,18 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-const ContactForm = () => {
+const ContactForm = (props) => {
   const { t } = useTranslation()
+  let { contactId } = useParams()
+
+  useEffect(() => {
+    console.log(props.mode)
+    console.log(contactId)
+  }, [])
 
   const formik = useFormik({
     initialValues: {
@@ -45,7 +53,7 @@ const ContactForm = () => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              {t('contactForm.name')}
+              {t(`contactForm.name_${props.mode}`)}
             </Heading>
           </Center>
         </Box>
@@ -145,7 +153,7 @@ const ContactForm = () => {
               variant="solid"
               w="100%"
             >
-              {t('contactForm.addContactButton')}
+              {t(`contactForm.${props.mode}ContactButton`)}
             </Button>
           </form>
         </Box>
@@ -159,6 +167,10 @@ const ContactForm = () => {
       </Box>
     </>
   )
+}
+
+ContactForm.propTypes = {
+  mode: PropTypes.oneOf(['create', 'edit']).isRequired
 }
 
 export default ContactForm

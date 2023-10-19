@@ -3,7 +3,7 @@ import { EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 
 const ContactItemActions = () => {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   return (
     <Box py={6}>
@@ -11,14 +11,14 @@ const ContactItemActions = () => {
         <Button
           colorScheme="orange"
           rightIcon={<SettingsIcon/>}
-          onClick={() => navigate('/add-address')}
+          onClick={() => navigate('/contacts/1/edit')}
         >
           Manage contact
         </Button>
         <Button
           colorScheme="green"
           rightIcon={<EmailIcon/>}
-          onClick={() => navigate('/add-address')}
+          onClick={() => navigate('/address/create')}
         >
           Add new address
         </Button>
