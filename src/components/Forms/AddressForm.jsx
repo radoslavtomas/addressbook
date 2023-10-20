@@ -39,12 +39,12 @@ const AddressForm = (props) => {
       country: '',
     },
     validationSchema: Yup.object({
-      address_line_1: Yup.string().min(3, t('validation.addres_line_1.min')).required(t('validation.address_line_1.required')),
-      address_line_2: Yup.string().min(3, t('validation.addres_line_2.min')),
-      address_line_3: Yup.string().min(3, t('validation.addres_line_3.min')),
-      address_line_4: Yup.string().min(3, t('validation.addres_line_4.min')).required(t('validation.address_line_4.required')),
-      postcode: Yup.string().min(4, t('validation.postocde.min')).required(t('validation.postocde.required')),
-      country: Yup.string().min(2, t('validation.country.min')).required(t('validation.country.required')),
+      address_line_1: Yup.string().min(3, t('validation.address_line_1.min')).required(t('validation.address_line_1.required')),
+      address_line_2: Yup.string(),
+      address_line_3: Yup.string().min(3, t('validation.address_line_3.min')),
+      address_line_4: Yup.string().min(3, t('validation.address_line_4.min')).required(t('validation.address_line_4.required')),
+      postcode: Yup.string().min(4, t('validation.postcode.min')).required(t('validation.postcode.required')),
+      country: Yup.string().required(t('validation.country.required')),
     }),
     onSubmit: values => {
       console.log(values)

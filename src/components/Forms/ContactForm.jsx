@@ -38,9 +38,9 @@ const ContactForm = (props) => {
     validationSchema: Yup.object({
       firstName: Yup.string().min(2, t('validation.firstName.min')).required(t('validation.firstName.required')),
       lastName: Yup.string().min(2, t('validation.lastName.min')).required(t('validation.lastName.required')),
-      dateOfBirth: Yup.string().min(2, t('validation.dateOfBirth.min')).required(t('validation.dateOfBirth.required')),
-      email: Yup.string().email(t('validation.email.invalidFormat')).required(t('validation.email.required')),
-      phone: Yup.string().min(10, t('validation.phone.min')).required(t('validation.phone.required'))
+      dateOfBirth: Yup.date().max(new Date(), t('validation.dateOfBirth.max')),
+      email: Yup.string().email(t('validation.email.invalidFormat')),
+      phone: Yup.string().min(10, t('validation.phone.min'))
     }),
     onSubmit: values => {
       console.log(values)

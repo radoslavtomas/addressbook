@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Center,
@@ -11,13 +13,15 @@ import {
   Heading,
   Input,
   Text,
-  useColorModeValue
+  useColorModeValue,
+  useToast
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 
 const PasswordResetForm = () => {
   const { t } = useTranslation()
+  const toast = useToast()
 
   const formik = useFormik({
     initialValues: {
@@ -37,7 +41,7 @@ const PasswordResetForm = () => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              {t('passwordResetForm.name')}
+              {t('resetPasswordForm.name')}
             </Heading>
           </Center>
         </Box>
@@ -45,9 +49,15 @@ const PasswordResetForm = () => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
+
+          <Alert mb={6} borderRadius={4} status="error">
+            <AlertIcon/>
+            {t('resetPasswordForm.responseError')}
+          </Alert>
+
           <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isInvalid={formik.touched.email && formik.errors.email}>
-              <FormLabel htmlFor="email">{t('passwordResetForm.form.email')}</FormLabel>
+              <FormLabel htmlFor="email">{t('resetPasswordForm.form.email')}</FormLabel>
               <Input
                 id="email"
                 type="email"
@@ -69,8 +79,17 @@ const PasswordResetForm = () => {
               colorScheme="orange"
               variant="solid"
               w="100%"
+              onClick={() =>
+                toast({
+                  title: t('resetPasswordForm.responseSuccessTitle'),
+                  description: t('resetPasswordForm.responseSuccessMessage'),
+                  status: 'success',
+                  duration: 9000,
+                  isClosable: true,
+                })
+              }
             >
-              {t('passwordResetForm.resetButton')}
+              {t('resetPasswordForm.resetButton')}
             </Button>
           </form>
         </Box>
@@ -79,7 +98,7 @@ const PasswordResetForm = () => {
       <Box delay={0.2}>
         <Center textTransform={'uppercase'}>
           <Link to="/login"><Text
-            color={useColorModeValue('orange.600', 'gray.400')}>{t('passwordResetForm.backToLogin')}</Text></Link>
+            color={useColorModeValue('orange.600', 'gray.400')}>{t('resetPasswordForm.backToLogin')}</Text></Link>
         </Center>
       </Box>
     </>

@@ -11,7 +11,7 @@
   "index": {
     "heroMessage": "Moderný adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou"
   },
-  "register": {
+  "registerForm": {
     "name": "Registrácia",
     "form": {
       "name": "Meno",
@@ -21,7 +21,7 @@
     "haveAccount": "Už máš vytvorený účet?",
     "loginHere": "Prihlás sa tu"
   },
-  "login": {
+  "loginForm": {
     "name": "Prihlásenie",
     "form": {
       "email": "Email",
@@ -31,14 +31,6 @@
     "registerHere": "Zaregistruj sa",
     "forgotPassword": "Zabudnuté heslo?",
     "resetHere": "Zmeň si ho"
-  },
-  "passwordReset": {
-    "name": "Zmeniť zabudnuté heslo",
-    "form": {
-      "email": "Email"
-    },
-    "resetButton": "Zmeň heslo",
-    "backToLogin": "Späť na prihlásenie"
   },
   "contactForm": {
     "name_create": "Pridaj kontakt",
@@ -89,18 +81,61 @@
     },
     "savePasswordButton": "Ulož heslo"
   },
+  "resetPasswordForm": {
+    "name": "Zmeniť zabudnuté heslo",
+    "form": {
+      "email": "Email"
+    },
+    "resetButton": "Zmeň heslo",
+    "backToLogin": "Späť na prihlásenie",
+    "responseSuccessTitle": "Skvelé!",
+    "responseSuccessMessage": "Poslali sme ti link na zmenu hesla",
+    "responseError": "Niekde sa stala chyba a nepodarilo sa nám odoslať ti email. Skús to, prosím, neskôr."
+  },
   "validation": {
     "name": {
       "required": "Meno je povinný údaj",
       "min": "Meno musí obsahovať aspoň dva znaky"
     },
+    "firstName": {
+      "required": "Meno je povinný údaj",
+      "min": "Meno musí obsahovať aspoň dva znaky"
+    },
+    "lastName": {
+      "required": "Prezvisko je povinný údaj",
+      "min": "Priezvisko musí obsahovať aspoň dva znaky"
+    },
     "email": {
       "required": "Email je povinný údaj",
       "invalidFormat": "Neplatná emailová adresa"
     },
+    "dateOfBirth": {
+      "max": "Dátum narodenia musí byť v minulosti"
+    },
+    "phone": {
+      "min": "Meno musí obsahovať aspoň 10 znakov"
+    },
     "password": {
       "required": "Heslo je povinný údaj",
       "min": "Heslo musí obsahovať aspoň 6 znakov"
+    },
+    "address_line_1": {
+      "required": "Ulica is required",
+      "min": "Ulica musí obsahovať aspoň tri znaky"
+    },
+    "address_line_3": {
+      "min": "Región musí obsahovať aspoň tri znaky"
+    },
+    "address_line_4": {
+      "required": "Mesto je povinný údaj",
+      "min": "Mesto musí obsahovať aspoň tri znaky"
+    },
+    "postcode": {
+      "required": "PSČ je povinný údaj",
+      "min": "PSČ musí obsahovať aspoň 4 znaky"
+    },
+    "country": {
+      "required": "Krajina je povinný údaj"
     }
   }
 }

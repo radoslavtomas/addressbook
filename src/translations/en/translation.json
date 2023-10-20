@@ -32,14 +32,6 @@
     "forgotPassword": "Forgot your password?",
     "resetHere": "Reset it here"
   },
-  "passwordResetForm": {
-    "name": "Reset your password",
-    "form": {
-      "email": "Email"
-    },
-    "resetButton": "Reset password",
-    "backToLogin": "Back to Login"
-  },
   "contactForm": {
     "name_create": "Add contact",
     "name_edit": "Edit contact",
@@ -89,18 +81,61 @@
     },
     "savePasswordButton": "Save password"
   },
+  "resetPasswordForm": {
+    "name": "Reset your password",
+    "form": {
+      "email": "Email"
+    },
+    "resetButton": "Reset password",
+    "backToLogin": "Back to Login",
+    "responseSuccessTitle": "Success!",
+    "responseSuccessMessage": "We have emailed you your password reset link",
+    "responseError": "There was an error when sending you the email. Please, try again later."
+  },
   "validation": {
     "name": {
       "required": "Name is required",
       "min": "Name must be at least 2 characters long"
     },
+    "firstName": {
+      "required": "First name is required",
+      "min": "First name must be at least 2 characters long"
+    },
+    "lastName": {
+      "required": "Last name is required",
+      "min": "Last name must be at least 2 characters long"
+    },
     "email": {
       "required": "Email is required",
       "invalidFormat": "Invalid email address"
     },
+    "dateOfBirth": {
+      "max": "Date of birth must be in teh past"
+    },
+    "phone": {
+      "min": "Name must be at least 10 characters long"
+    },
     "password": {
       "required": "Password is required",
       "min": "Password must be at least 6 characters long"
+    },
+    "address_line_1": {
+      "required": "Address line is required",
+      "min": "Address line must be at least 3 characters long"
+    },
+    "address_line_3": {
+      "min": "Region line must be at least 3 characters long"
+    },
+    "address_line_4": {
+      "required": "City is required",
+      "min": "City must be at least 3 characters long"
+    },
+    "postcode": {
+      "required": "Postcode is required",
+      "min": "Postcode must be at least 4 characters long"
+    },
+    "country": {
+      "required": "Address line is required"
     }
   }
 }
