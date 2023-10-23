@@ -1,5 +1,4 @@
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -13,11 +12,12 @@ import {
   useDisclosure,
   VStack
 } from '@chakra-ui/react'
-import { HamburgerIcon, LockIcon } from '@chakra-ui/icons'
+import { HamburgerIcon } from '@chakra-ui/icons'
 import SiteLogo from '../SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawerList from './NaviagtionDrawerList.jsx'
+import LogoutButton from '../LogoutButton/LogoutButton.jsx'
 import { useTranslation } from 'react-i18next'
 
 const NavigationDrawer = () => {
@@ -48,7 +48,7 @@ const NavigationDrawer = () => {
           </DrawerBody>
 
           <DrawerFooter justifyContent="start">
-            <Button colorScheme="red" rightIcon={<LockIcon/>}>{t('logoutButton')}</Button>
+            <LogoutButton/>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

@@ -1,8 +1,11 @@
 import axios from 'axios'
 
-const axiosClient = axios.create({
+export const baseURL = 'http://localhost:8000'
+export const apiPrefix = '/api/v1'
+
+export const axiosClient = axios.create({
   // baseURL: 'https://snomapi.rdslv.com/api/v1',
-  baseURL: 'http://localhost:8000/api/v1',
+  baseURL: baseURL + apiPrefix,
   withCredentials: true
 })
 
@@ -30,5 +33,3 @@ const errorHandler = (error) => {
 axiosClient.interceptors.response.use(undefined, (error) => {
   return errorHandler(error)
 })
-
-export default axiosClient

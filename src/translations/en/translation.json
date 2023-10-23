@@ -140,6 +140,7 @@
     }
   },
   "errors": {
-    "registration": "Registration failed, please try again later."
+    "registration": "Registration failed, please try again later.",
+    "login": "These credentials do not match our records"
   }
 }

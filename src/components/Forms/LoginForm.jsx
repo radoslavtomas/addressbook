@@ -15,9 +15,12 @@ import {
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-const LoginForm = () => {
+const LoginForm = ({ handleLogin }) => {
   const { t } = useTranslation()
+  const [isLoading, setIsLoading] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -26,10 +29,12 @@ const LoginForm = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string().email(t('validation.email.invalidFormat')).required(t('validation.email.required')),
-      password: Yup.string().min(6, t('validation.password.min')).required(t('validation.password.required'))
+      password: Yup.string().min(8, t('validation.password.min')).required(t('validation.password.required'))
     }),
-    onSubmit: values => {
-      console.log(values)
+    onSubmit: async (values) => {
+      setIsLoading(true)
+      await handleLogin(values)
+      setIsLoading(false)
     }
   })
 
@@ -82,6 +87,7 @@ const LoginForm = () => {
             </FormControl>
 
             <Button
+              isLoading={isLoading}
               type="submit"
               rightIcon={<ChevronRightIcon/>}
               colorScheme="orange"
@@ -107,6 +113,10 @@ const LoginForm = () => {
       <a href="https://storyset.com/work">Work illustrations by Storyset</a>
     </>
   )
+}
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired
 }
 
 export default LoginForm

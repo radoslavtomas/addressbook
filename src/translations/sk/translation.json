@@ -140,6 +140,7 @@
     }
   },
   "errors": {
-    "registration": "Registrácia sa nepodarila. Skúste to, prosím, neskôr."
+    "registration": "Registrácia sa nepodarila. Skúste to, prosím, neskôr.",
+    "login": "Zadané údaje sa nezhodujú s našimi záznamami v databáze"
   }
 }

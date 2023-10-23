@@ -14,7 +14,8 @@ const Register = () => {
     try {
       const response = await register(values)
       console.log(response)
-      // redirect to /contacts page
+
+      // TODO: login redirect to /contacts page
     } catch (err) {
       console.log(err)
       if (err.response.status === 422) {
