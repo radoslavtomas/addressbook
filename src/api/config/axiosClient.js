@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const axiosClient = axios.create({
   // baseURL: 'https://snomapi.rdslv.com/api/v1',
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'http://localhost:8000/api/v1',
   withCredentials: true
 })
 
@@ -21,7 +21,7 @@ const errorHandler = (error) => {
   // }
 
   console.log('error status: ', statusCode)
-  console.error(error)
+  console.log(error)
 
   return Promise.reject(error)
 }

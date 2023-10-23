@@ -15,9 +15,16 @@ import {
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-const RegisterForm = () => {
+const RegisterForm = ({ handleRegistration }) => {
   const { t } = useTranslation()
+  const [isLoading, setIsLoading] = useState(false)
+
+  const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
+  // in case we would need special character as well
+  // const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*.-]).{8,}$/
 
   const formik = useFormik({
     initialValues: {
@@ -28,10 +35,15 @@ const RegisterForm = () => {
     validationSchema: Yup.object({
       name: Yup.string().min(2, t('validation.name.min')).required(t('validation.name.required')),
       email: Yup.string().email(t('validation.email.invalidFormat')).required(t('validation.email.required')),
-      password: Yup.string().min(6, t('validation.password.min')).required(t('validation.password.required'))
+      password: Yup.string()
+        .min(8, t('validation.password.min'))
+        .matches(passwordRegex, t('validation.password.matches'))
+        .required(t('validation.password.required'))
     }),
-    onSubmit: values => {
-      console.log(values)
+    onSubmit: async (values) => {
+      setIsLoading(true)
+      await handleRegistration(values)
+      setIsLoading(false)
     }
   })
 
@@ -49,7 +61,7 @@ const RegisterForm = () => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isRequired isInvalid={formik.touched.name && formik.errors.name}>
               <FormLabel htmlFor="name">{t('registerForm.form.name')}</FormLabel>
               <Input
@@ -100,6 +112,7 @@ const RegisterForm = () => {
             </FormControl>
 
             <Button
+              isLoading={isLoading}
               type="submit"
               rightIcon={<ChevronRightIcon/>}
               colorScheme="orange"
@@ -123,6 +136,10 @@ const RegisterForm = () => {
       </Box>
     </>
   )
+}
+
+RegisterForm.propTypes = {
+  handleRegistration: PropTypes.func.isRequired
 }
 
 export default RegisterForm

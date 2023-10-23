@@ -117,7 +117,8 @@
     },
     "password": {
       "required": "Password is required",
-      "min": "Password must be at least 6 characters long"
+      "min": "Password must be at least 8 characters long",
+      "matches": "Password must contain at least one uppercase letter, one lowercase letter and one number"
     },
     "address_line_1": {
       "required": "Address line is required",
@@ -137,5 +138,8 @@
     "country": {
       "required": "Address line is required"
     }
+  },
+  "errors": {
+    "registration": "Registration failed, please try again later."
   }
 }

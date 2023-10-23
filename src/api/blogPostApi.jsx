@@ -1,4 +1,4 @@
-import axiosClient from './config/axiosClient.jsx'
+import axiosClient from './config/axiosClient.js'
 
 // const delay = () => new Promise(res => setTimeout(() => res(), 800))
 
