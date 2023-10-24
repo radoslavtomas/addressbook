@@ -5,6 +5,7 @@ import SiteLogo from '../components/SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../components/ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawer from '../components/NavigationDrawer/NavigationDrawer.jsx'
+import { useSelector } from 'react-redux'
 
 const variants = {
   hidden: { opacity: 0, x: 0, y: 20 },
@@ -13,6 +14,8 @@ const variants = {
 }
 
 const RootLayout = () => {
+  const user = useSelector((state) => state.user.user)
+
   return (
     <motion.div
       initial="hidden"
@@ -34,7 +37,7 @@ const RootLayout = () => {
           <HStack>
             <LanguageToggle/>
             <ThemeToggleButton/>
-            <NavigationDrawer/>
+            {user && <NavigationDrawer/>}
           </HStack>
         </Flex>
 

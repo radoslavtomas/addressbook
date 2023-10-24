@@ -1,6 +1,7 @@
 import { Box, Button, Flex } from '@chakra-ui/react'
 import { EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
+import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 
 const ContactItemActions = () => {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ const ContactItemActions = () => {
         <Button
           colorScheme="orange"
           rightIcon={<SettingsIcon/>}
-          onClick={() => navigate('/contacts/1/edit')}
+          onClick={() => navigate(resolveUrl(namedUrls.contactsEdit, { contactsId: 1 }))}
         >
           Manage contact
         </Button>

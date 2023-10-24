@@ -12,54 +12,56 @@ import UpdatePassword from '../pages/UpdatePassword/UpdatePassword.jsx'
 import ContactsEdit from '../pages/Contacts/ContactsEdit.jsx'
 import AddressEdit from '../pages/Address/AddressEdit.jsx'
 
+import { namedUrls } from './routesConfig.js'
+
 const routes = [
   {
-    path: '/',
+    path: namedUrls.home,
     element: <RootLayout/>,
     errorElement: <Error/>,
     children: [
       {
-        path: '/',
+        path: namedUrls.home,
         element: <Welcome/>
       },
       {
-        path: '/login',
+        path: namedUrls.login,
         element: <Login/>
       },
       {
-        path: '/register',
+        path: namedUrls.register,
         element: <Register/>
       },
       {
-        path: '/profile',
+        path: namedUrls.profile,
         element: <Profile/>
       },
       {
-        path: '/update-password',
+        path: namedUrls.updatePassword,
         element: <UpdatePassword/>
       },
       {
-        path: '/reset-password',
+        path: namedUrls.resetPassword,
         element: <PasswordReset/>
       },
       {
-        path: '/contacts',
+        path: namedUrls.contacts,
         element: <Contacts/>
       },
       {
-        path: '/contacts/create',
+        path: namedUrls.contactsCreate,
         element: <ContactsCreate/>
       },
       {
-        path: '/contacts/:contactId/edit',
+        path: namedUrls.contactsEdit,
         element: <ContactsEdit/>
       },
       {
-        path: '/address/create',
+        path: namedUrls.addressCreate,
         element: <AddressCreate/>
       },
       {
-        path: '/address/:addressId/edit',
+        path: namedUrls.addressEdit,
         element: <AddressEdit/>
       }
     ]
