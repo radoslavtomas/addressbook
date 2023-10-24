@@ -48,7 +48,7 @@ const NavigationDrawer = () => {
           </DrawerBody>
 
           <DrawerFooter justifyContent="start">
-            <LogoutButton/>
+            <LogoutButton onClose={onClose}/>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

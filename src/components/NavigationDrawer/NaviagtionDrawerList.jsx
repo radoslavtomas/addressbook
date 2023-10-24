@@ -3,8 +3,8 @@ import { Flex, List, ListIcon, ListItem } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 import { EmailIcon, PlusSquareIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
 const NavigationDrawerList = ({ onClose }) => {
   const { t } = useTranslation()
 
@@ -36,6 +36,10 @@ const NavigationDrawerList = ({ onClose }) => {
       </ListItem>
     </List>
   )
+}
+
+NavigationDrawerList.propTypes = {
+  onClose: PropTypes.func.isRequired
 }
 
 export default NavigationDrawerList

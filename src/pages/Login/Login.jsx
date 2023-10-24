@@ -3,30 +3,34 @@ import { Alert, AlertIcon, Box, Container } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import { getCsrfCookie, getUser, login } from '../../api/authApi.js'
+import { logUserIn } from '../../store/userSlice.js'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const { t } = useTranslation()
   const [error, setError] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleLogin = async (values) => {
     setError('')
 
     try {
-      // set CSRF cookie
-      await getCsrfCookie()
+      await getCsrfCookie() // set CSRF cookie
 
-      // do login
-      const response = await login(values)
-      console.log(response)
+      await login(values) // do login
 
-      const user = await getUser()
+      const user = await getUser() // get authenticated user
       console.log(user)
 
-      // TODO: redirect to /contacts page
+      dispatch(logUserIn(user)) // set user in store
+
+      navigate('/contacts')
     } catch (err) {
       console.log(err)
-      console.log(t('errors.login'))
-      setError(err.response.data.message)
+      // setError(err.response.data.message)
+      setError(t('errors.login'))
     }
   }
   return (
