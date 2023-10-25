@@ -19,6 +19,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Link, useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const AddressForm = (props) => {
   const { t, i18n } = useTranslation()
@@ -188,7 +189,7 @@ const AddressForm = (props) => {
 
       <Box delay={0.2}>
         <Center textTransform={'uppercase'}>
-          <Link to={'/contacts'}><Text
+          <Link to={namedUrls.contacts}><Text
             color={useColorModeValue('orange.600', 'gray.400')}>{t('addressForm.backToContacts')}</Text></Link>
         </Center>
       </Box>

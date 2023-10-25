@@ -3,8 +3,9 @@
   "loginButton": "Prihlás sa",
   "registerButton": "Zaregistruj sa",
   "logoutButton": "Odhlásiť",
+  "myContactsButton": "Moje kontakty",
   "navigation": {
-    "contacts": "Kontakty",
+    "contacts": "Moje kontakty",
     "addContact": "Pridaj kontakt",
     "profile": "Profil"
   },

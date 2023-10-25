@@ -15,6 +15,7 @@ import {
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
+import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 
 const ContactItemAddress = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -72,7 +73,7 @@ const ContactItemAddress = () => {
           size="sm"
           variant="link"
           rightIcon={<EditIcon/>}
-          onClick={() => navigate('/address/1/edit')}
+          onClick={() => navigate(resolveUrl(namedUrls.addressEdit, { addressId: 1 }))}
         >
           Edit Address
         </Button>

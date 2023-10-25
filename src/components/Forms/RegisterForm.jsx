@@ -17,6 +17,7 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const RegisterForm = ({ handleRegistration }) => {
   const { t } = useTranslation()
@@ -130,7 +131,7 @@ const RegisterForm = ({ handleRegistration }) => {
           <p>{t('registerForm.haveAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to={'/login'}><Text
+          <Link to={namedUrls.login}><Text
             color={useColorModeValue('orange.600', 'gray.400')}>{t('registerForm.loginHere')}</Text></Link>
         </Center>
       </Box>

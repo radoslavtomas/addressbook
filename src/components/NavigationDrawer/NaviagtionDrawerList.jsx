@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { EmailIcon, PlusSquareIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const NavigationDrawerList = ({ onClose }) => {
   const { t } = useTranslation()
@@ -11,7 +12,7 @@ const NavigationDrawerList = ({ onClose }) => {
   return (
     <List spacing={4} mt={4}>
       <ListItem>
-        <NavLink to="/contacts" onClick={onClose}>
+        <NavLink to={namedUrls.contacts} onClick={onClose}>
           <Flex alignItems="center">
             <ListIcon as={EmailIcon}/>
             {t('navigation.contacts')}
@@ -19,7 +20,7 @@ const NavigationDrawerList = ({ onClose }) => {
         </NavLink>
       </ListItem>
       <ListItem>
-        <NavLink to="/contacts/create" onClick={onClose}>
+        <NavLink to={namedUrls.contactsCreate} onClick={onClose}>
           <Flex alignItems="center">
             <ListIcon as={PlusSquareIcon}/>
             {t('navigation.addContact')}
@@ -27,7 +28,7 @@ const NavigationDrawerList = ({ onClose }) => {
         </NavLink>
       </ListItem>
       <ListItem>
-        <NavLink to="/profile">
+        <NavLink to={namedUrls.profile}>
           <Flex alignItems="center" onClick={onClose}>
             <ListIcon as={SettingsIcon}/>
             {t('navigation.profile')}

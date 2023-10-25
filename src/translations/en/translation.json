@@ -3,8 +3,9 @@
   "loginButton": "Login",
   "registerButton": "Register",
   "logoutButton": "Logout",
+  "myContactsButton": "My contacts",
   "navigation": {
-    "contacts": "Contacts",
+    "contacts": "My contacts",
     "addContact": "Add contact",
     "profile": "Profile"
   },

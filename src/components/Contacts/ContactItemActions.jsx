@@ -19,7 +19,7 @@ const ContactItemActions = () => {
         <Button
           colorScheme="green"
           rightIcon={<EmailIcon/>}
-          onClick={() => navigate('/address/create')}
+          onClick={() => navigate(namedUrls.addressCreate)}
         >
           Add new address
         </Button>

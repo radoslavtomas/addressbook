@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const UpdatePasswordForm = () => {
   const { t } = useTranslation()
@@ -117,7 +118,7 @@ const UpdatePasswordForm = () => {
           <p>{t('registerForm.haveAccount')}</p>
         </Center>
         <Center textTransform={'uppercase'}>
-          <Link to={'/login'}><Text
+          <Link to={namedUrls.login}><Text
             color={useColorModeValue('orange.600', 'gray.400')}>{t('registerForm.loginHere')}</Text></Link>
         </Center>
       </Box>

@@ -6,6 +6,7 @@ import { logUserOut } from '../../store/userSlice.js'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const LogoutButton = ({ onClose }) => {
   const { t } = useTranslation()
@@ -30,7 +31,7 @@ const LogoutButton = ({ onClose }) => {
 
     // close drawer & navigate home
     onClose()
-    navigate('/')
+    navigate(namedUrls.home)
   }
 
   return (

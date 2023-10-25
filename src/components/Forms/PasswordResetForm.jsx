@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const PasswordResetForm = () => {
   const { t } = useTranslation()
@@ -97,7 +98,7 @@ const PasswordResetForm = () => {
 
       <Box delay={0.2}>
         <Center textTransform={'uppercase'}>
-          <Link to="/login"><Text
+          <Link to={namedUrls.login}><Text
             color={useColorModeValue('orange.600', 'gray.400')}>{t('resetPasswordForm.backToLogin')}</Text></Link>
         </Center>
       </Box>

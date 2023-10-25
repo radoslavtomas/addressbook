@@ -3,10 +3,44 @@ import { Button, Center, Container, Flex, Heading, Image, useColorModeValue } fr
 import NotebookImg from '../../assets/img/notebook.svg'
 import { EmailIcon, UnlockIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const Welcome = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const user = useSelector((state) => state.user.user)
+
+  let ctaButton = ''
+
+  if (user) {
+    ctaButton = <>
+      <Button
+        rightIcon={<EmailIcon/>}
+        colorScheme="green"
+        onClick={() => navigate(namedUrls.contacts)}
+      >
+        {t('myContactsButton')}
+      </Button>
+    </>
+  } else {
+    ctaButton = <>
+      <Button
+        rightIcon={<UnlockIcon/>}
+        colorScheme="blue" onClick={() => navigate(namedUrls.login)}
+      >
+        {t('loginButton')}
+      </Button>
+
+      <Button
+        rightIcon={<EmailIcon/>}
+        colorScheme="green"
+        onClick={() => navigate(namedUrls.register)}
+      >
+        {t('registerButton')}
+      </Button>
+    </>
+  }
 
   return (
     <Container maxW="container.lg" px={{ base: '8', lg: '4' }}>
@@ -37,20 +71,7 @@ const Welcome = () => {
           </Heading>
 
           <Flex gap="6" justifyContent={{ base: 'center', lg: 'start' }}>
-            <Button
-              rightIcon={<UnlockIcon/>}
-              colorScheme="blue" onClick={() => navigate('/login')}
-            >
-              {t('loginButton')}
-            </Button>
-
-            <Button
-              rightIcon={<EmailIcon/>}
-              colorScheme="green"
-              onClick={() => navigate('/register')}
-            >
-              {t('registerButton')}
-            </Button>
+            {ctaButton}
           </Flex>
         </Flex>
 

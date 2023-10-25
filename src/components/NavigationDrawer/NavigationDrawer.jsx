@@ -18,11 +18,9 @@ import ThemeToggleButton from '../ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawerList from './NaviagtionDrawerList.jsx'
 import LogoutButton from '../LogoutButton/LogoutButton.jsx'
-import { useTranslation } from 'react-i18next'
 
 const NavigationDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { t } = useTranslation()
 
   return (
     <>

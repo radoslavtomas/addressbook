@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const ProfileForm = () => {
   const { t } = useTranslation()
@@ -84,7 +85,7 @@ const ProfileForm = () => {
 
           <Box mt={4}>
             <Button
-              onClick={() => navigate('/contacts')}
+              onClick={() => navigate(namedUrls.contacts)}
               rightIcon={<EmailIcon/>}
               colorScheme="green"
               variant="solid"
