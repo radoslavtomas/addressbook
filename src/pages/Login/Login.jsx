@@ -2,10 +2,11 @@ import LoginForm from '../../components/Forms/LoginForm.jsx'
 import { Alert, AlertIcon, Box, Container } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-import { getCsrfCookie, getUser, login } from '../../api/authApi.js'
-import { logUserIn } from '../../store/userSlice.js'
+import { getCsrfCookie, login } from '../../api/authApi.js'
+import { getUser } from '../../api/userApi.js'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { logUserIn } from '../../store/userSlice.js'
 
 const Login = () => {
   const { t } = useTranslation()
@@ -22,9 +23,9 @@ const Login = () => {
       await login(values) // do login
 
       const user = await getUser() // get authenticated user
-      console.log(user)
 
       dispatch(logUserIn(user)) // set user in store
+      sessionStorage.setItem('user', JSON.stringify(user))
 
       navigate('/contacts')
     } catch (err) {

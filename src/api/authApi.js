@@ -38,8 +38,3 @@ export const logout = async () => {
 
   return response.data
 }
-
-export const getUser = async () => {
-  const response = await axiosClient.get('/user')
-  return response.data
-}

@@ -11,6 +11,7 @@ import Profile from '../pages/Profile/Profile.jsx'
 import UpdatePassword from '../pages/UpdatePassword/UpdatePassword.jsx'
 import ContactsEdit from '../pages/Contacts/ContactsEdit.jsx'
 import AddressEdit from '../pages/Address/AddressEdit.jsx'
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute.jsx'
 
 import { namedUrls } from './routesConfig.js'
 
@@ -34,35 +35,35 @@ const routes = [
       },
       {
         path: namedUrls.profile,
-        element: <Profile/>
+        element: <PrivateRoute><Profile/></PrivateRoute>
       },
       {
         path: namedUrls.updatePassword,
-        element: <UpdatePassword/>
+        element: <PrivateRoute><UpdatePassword/></PrivateRoute>
       },
       {
         path: namedUrls.resetPassword,
-        element: <PasswordReset/>
+        element: <PrivateRoute><PasswordReset/></PrivateRoute>
       },
       {
         path: namedUrls.contacts,
-        element: <Contacts/>
+        element: <PrivateRoute><Contacts/></PrivateRoute>
       },
       {
         path: namedUrls.contactsCreate,
-        element: <ContactsCreate/>
+        element: <PrivateRoute><ContactsCreate/></PrivateRoute>
       },
       {
         path: namedUrls.contactsEdit,
-        element: <ContactsEdit/>
+        element: <PrivateRoute><ContactsEdit/></PrivateRoute>
       },
       {
         path: namedUrls.addressCreate,
-        element: <AddressCreate/>
+        element: <PrivateRoute><AddressCreate/></PrivateRoute>
       },
       {
         path: namedUrls.addressEdit,
-        element: <AddressEdit/>
+        element: <PrivateRoute><AddressEdit/></PrivateRoute>
       }
     ]
   },

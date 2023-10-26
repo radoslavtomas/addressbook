@@ -4,11 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { logout } from '../../api/authApi.js'
 import { logUserOut } from '../../store/userSlice.js'
 import { useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
 
-const LogoutButton = ({ onClose }) => {
+const LogoutButton = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,8 +17,9 @@ const LogoutButton = ({ onClose }) => {
     // do actual logout
     await logout()
 
-    // clear store
+    // clear store & sessionStorage
     dispatch(logUserOut())
+    sessionStorage.removeItem('user')
 
     // feedback user
     toast({
@@ -29,8 +29,6 @@ const LogoutButton = ({ onClose }) => {
       duration: 9000
     })
 
-    // close drawer & navigate home
-    onClose()
     navigate(namedUrls.home)
   }
 
@@ -43,10 +41,6 @@ const LogoutButton = ({ onClose }) => {
       {t('logoutButton')}
     </Button>
   )
-}
-
-LogoutButton.propTypes = {
-  onClose: PropTypes.func.isRequired
 }
 
 export default LogoutButton
