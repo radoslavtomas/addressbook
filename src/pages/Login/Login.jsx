@@ -24,8 +24,8 @@ const Login = () => {
 
       const user = await getUser() // get authenticated user
 
-      dispatch(logUserIn(user)) // set user in store
-      sessionStorage.setItem('user', JSON.stringify(user))
+      dispatch(logUserIn(user.data)) // set user in store
+      sessionStorage.setItem('user', JSON.stringify(user.data))
 
       navigate('/contacts')
     } catch (err) {

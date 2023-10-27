@@ -16,70 +16,84 @@ import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import { useRef } from 'react'
 import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
+import PropTypes from 'prop-types'
 
-const ContactItemAddress = () => {
+const ContactItemAddress = ({ addresses }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
   const navigate = useNavigate()
 
+  console.log(addresses)
+
   return (
-    <Box>
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Delete address for Neverland
-            </AlertDialogHeader>
+    addresses.map(address => {
+      return (
+        <Box key={address.id}>
+          <AlertDialog
+            isOpen={isOpen}
+            leastDestructiveRef={cancelRef}
+            onClose={onClose}
+          >
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  Delete address for {address.city}
+                </AlertDialogHeader>
 
-            <AlertDialogBody>
-              Are you sure? You cannot undo this action afterwards.
-            </AlertDialogBody>
+                <AlertDialogBody>
+                  Are you sure? You cannot undo this action afterwards.
+                </AlertDialogBody>
 
-            <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="red" onClick={onClose} ml={3}>
-                Delete
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
+                <AlertDialogFooter>
+                  <Button ref={cancelRef} onClick={onClose}>
+                    Cancel
+                  </Button>
+                  <Button colorScheme="red" onClick={onClose} ml={3}>
+                    Delete
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
 
-      <Heading size="xs" textTransform="uppercase">
-        Address for Neverland
-      </Heading>
-      <Text pt="2" fontSize="sm">Somewhere 123</Text>
-      <Text pt="2" fontSize="sm">Neverland</Text>
-      <Text pt="2" fontSize="sm">111 22</Text>
-      <Text pt="2" fontSize="sm">UNITED KINGDOM</Text>
-      <HStack justifyContent="end" spacing={8} mt={4}>
-        <Button
-          onClick={onOpen}
-          colorScheme="red"
-          size="sm"
-          variant="link"
-          rightIcon={<DeleteIcon/>}
-        >
-          Delete
-        </Button>
-        <Button
-          colorScheme="blue"
-          size="sm"
-          variant="link"
-          rightIcon={<EditIcon/>}
-          onClick={() => navigate(resolveUrl(namedUrls.addressEdit, { addressId: 1 }))}
-        >
-          Edit Address
-        </Button>
-      </HStack>
-    </Box>
+          <Heading size="xs" textTransform="uppercase">
+            Address for {address.city}
+          </Heading>
+          <Text pt="2" fontSize="sm">{address.address_line_1}</Text>
+          {address.address_line_2 && <Text pt="2" fontSize="sm">{address.address_line_2}</Text>}
+          {address.address_line_3 && <Text pt="2" fontSize="sm">{address.address_line_3}</Text>}
+          <Text pt="2" fontSize="sm">{address.city}</Text>
+          <Text pt="2" fontSize="sm">{address.postcode}</Text>
+          <Text pt="2" fontSize="sm" textTransform="uppercase">{address.country}</Text>
+          <HStack justifyContent="end" spacing={8} mt={4}>
+            <Button
+              onClick={onOpen}
+              colorScheme="red"
+              size="sm"
+              variant="link"
+              rightIcon={<DeleteIcon/>}
+            >
+              Delete
+            </Button>
+            <Button
+              colorScheme="blue"
+              size="sm"
+              variant="link"
+              rightIcon={<EditIcon/>}
+              onClick={() => navigate(resolveUrl(namedUrls.addressEdit, { addressId: address.id }))}
+            >
+              Edit Address
+            </Button>
+          </HStack>
+        </Box>
+      )
+    })
+
   )
+}
+
+ContactItemAddress.propTypes = {
+  addresses: PropTypes.array.isRequired
 }
 
 export default ContactItemAddress
