@@ -37,9 +37,9 @@
     "name_create": "Add contact",
     "name_edit": "Edit contact",
     "form": {
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "dateOfBirth": "Date Of Birth",
+      "first_names": "First Name",
+      "last_name": "Last Name",
+      "date_of_birth": "Date Of Birth",
       "phone": "Phone",
       "email": "Email"
     },
@@ -98,11 +98,11 @@
       "required": "Name is required",
       "min": "Name must be at least 2 characters long"
     },
-    "firstName": {
+    "first_names": {
       "required": "First name is required",
       "min": "First name must be at least 2 characters long"
     },
-    "lastName": {
+    "last_name": {
       "required": "Last name is required",
       "min": "Last name must be at least 2 characters long"
     },
@@ -110,8 +110,8 @@
       "required": "Email is required",
       "invalidFormat": "Invalid email address"
     },
-    "dateOfBirth": {
-      "max": "Date of birth must be in teh past"
+    "date_of_birth": {
+      "max": "Date of birth must be in the past"
     },
     "phone": {
       "min": "Name must be at least 10 characters long"

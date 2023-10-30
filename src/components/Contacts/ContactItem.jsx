@@ -6,8 +6,8 @@ import ContactItemActions from './ContactItemActions.jsx'
 import PropTypes from 'prop-types'
 
 const ContactItem = ({ contact }) => {
-  console.log(contact)
   const showItemDetail = contact.date_of_birth || contact.email || contact.phone
+
   return (
     <Stack divider={<StackDivider/>} spacing={4}>
       {showItemDetail && <ContactItemDetail contact={contact}/>}

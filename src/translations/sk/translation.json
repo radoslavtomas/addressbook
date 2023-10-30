@@ -37,9 +37,9 @@
     "name_create": "Pridaj kontakt",
     "name_edit": "Uprav kontakt",
     "form": {
-      "firstName": "Meno",
-      "lastName": "Priezvisko",
-      "dateOfBirth": "Dátum narodenia",
+      "first_names": "Meno",
+      "lastname": "Priezvisko",
+      "date_of_birth": "Dátum narodenia",
       "phone": "Telefón",
       "email": "Email"
     },
@@ -98,11 +98,11 @@
       "required": "Meno je povinný údaj",
       "min": "Meno musí obsahovať aspoň dva znaky"
     },
-    "firstName": {
+    "first_names": {
       "required": "Meno je povinný údaj",
       "min": "Meno musí obsahovať aspoň dva znaky"
     },
-    "lastName": {
+    "last_name": {
       "required": "Prezvisko je povinný údaj",
       "min": "Priezvisko musí obsahovať aspoň dva znaky"
     },
@@ -110,7 +110,7 @@
       "required": "Email je povinný údaj",
       "invalidFormat": "Neplatná emailová adresa"
     },
-    "dateOfBirth": {
+    "date_of_birth": {
       "max": "Dátum narodenia musí byť v minulosti"
     },
     "phone": {

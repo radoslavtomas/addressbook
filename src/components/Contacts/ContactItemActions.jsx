@@ -2,8 +2,9 @@ import { Box, Button, Flex } from '@chakra-ui/react'
 import { EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
+import PropTypes from 'prop-types'
 
-const ContactItemActions = () => {
+const ContactItemActions = ({ contactId }) => {
   const navigate = useNavigate()
 
   return (
@@ -12,7 +13,7 @@ const ContactItemActions = () => {
         <Button
           colorScheme="orange"
           rightIcon={<SettingsIcon/>}
-          onClick={() => navigate(resolveUrl(namedUrls.contactsEdit, { contactsId: 1 }))}
+          onClick={() => navigate(resolveUrl(namedUrls.contactsEdit, { contactId: contactId }))}
         >
           Manage contact
         </Button>
@@ -26,6 +27,10 @@ const ContactItemActions = () => {
       </Flex>
     </Box>
   )
+}
+
+ContactItemActions.propTypes = {
+  contactId: PropTypes.number.isRequired
 }
 
 export default ContactItemActions

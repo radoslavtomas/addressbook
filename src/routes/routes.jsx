@@ -12,6 +12,7 @@ import UpdatePassword from '../pages/UpdatePassword/UpdatePassword.jsx'
 import ContactsEdit from '../pages/Contacts/ContactsEdit.jsx'
 import AddressEdit from '../pages/Address/AddressEdit.jsx'
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute.jsx'
+import GetUser from '../pages/GetUser/GetUser.jsx'
 
 import { namedUrls } from './routesConfig.js'
 
@@ -32,6 +33,10 @@ const routes = [
       {
         path: namedUrls.register,
         element: <Register/>
+      },
+      {
+        path: namedUrls.getUser,
+        element: <GetUser/>
       },
       {
         path: namedUrls.profile,

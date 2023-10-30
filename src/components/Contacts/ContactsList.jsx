@@ -15,8 +15,6 @@ import { useSelector } from 'react-redux'
 const ContactsList = () => {
   const user = useSelector((state) => state.user.user)
 
-  console.log(user)
-
   let content
 
   if (!user.contacts.length) {
@@ -35,7 +33,7 @@ const ContactsList = () => {
               <h2>
                 <AccordionButton _expanded={{ fontWeight: 'bold', color: 'orange.400' }}>
                   <Box as="span" flex="1" textAlign="left">
-                    {`${contact.first_names} ${contact.last_name}`}
+                    {`${contact.last_name}, ${contact.first_names}`}
                   </Box>
                   <AccordionIcon/>
                 </AccordionButton>
