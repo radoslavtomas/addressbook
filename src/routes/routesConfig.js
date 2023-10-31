@@ -7,10 +7,10 @@ export const namedUrls = {
   updatePassword: '/update-password',
   resetPassword: '/reset-password',
   contacts: '/contacts',
-  contactsCreate: '/contacts-create',
+  contactsCreate: '/contacts/create',
   contactsEdit: '/contacts/:contactId/edit',
-  addressCreate: '/address-create',
-  addressEdit: '/address/:addressId/edit'
+  addressCreate: '/contacts/:contactId/address',
+  addressEdit: '/contacts/:contactId/address/:addressId/edit'
 }
 
 export const resolveUrl = (url, params) => {

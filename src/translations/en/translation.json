@@ -54,7 +54,7 @@
       "address_line_1": "Address line",
       "address_line_2": "Address line 2",
       "address_line_3": "Region / County",
-      "address_line_4": "City",
+      "city": "City",
       "postcode": "Postcode / Zipcode",
       "country": "Country",
       "selectCountry": "Select country"
@@ -125,10 +125,13 @@
       "required": "Address line is required",
       "min": "Address line must be at least 3 characters long"
     },
+    "address_line_2": {
+      "min": "Address line must be at least 1 characters long"
+    },
     "address_line_3": {
       "min": "Region line must be at least 3 characters long"
     },
-    "address_line_4": {
+    "city": {
       "required": "City is required",
       "min": "City must be at least 3 characters long"
     },

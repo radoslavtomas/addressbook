@@ -54,7 +54,7 @@
       "address_line_1": "Ulica",
       "address_line_2": "Apartmán / Byt / Iné",
       "address_line_3": "Región",
-      "address_line_4": "Mesto",
+      "city": "Mesto",
       "postcode": "PSČ / Zipcode",
       "country": "Krajina",
       "selectCountry": "Vyber krajinu"
@@ -125,10 +125,13 @@
       "required": "Ulica is required",
       "min": "Ulica musí obsahovať aspoň tri znaky"
     },
+    "address_line_2": {
+      "min": "Pole obsahovať aspoň jeden znak"
+    },
     "address_line_3": {
       "min": "Región musí obsahovať aspoň tri znaky"
     },
-    "address_line_4": {
+    "city": {
       "required": "Mesto je povinný údaj",
       "min": "Mesto musí obsahovať aspoň tri znaky"
     },

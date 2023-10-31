@@ -1,13 +1,12 @@
 import { axiosClient } from './config/axiosClient.js'
 
-export const storeAddress = async ({
-  address_line_1,
-  address_line_2,
-  address_line_3,
-  city,
-  postocde,
-  country
-}) => {
-  const response = await axiosClient.post('/auth/register', { name, email, password })
+export const storeAddress = async (contactId, data) => {
+  const response = await axiosClient.post(`/contacts/${contactId}/addresses`, data)
+  return response.data
+}
+
+export const updateAddress = async (contactId, addressId, data) => {
+  data['_method'] = 'PUT'
+  const response = await axiosClient.post(`/contacts/${contactId}/addresses/${addressId}`, data)
   return response.data
 }

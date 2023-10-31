@@ -21,13 +21,15 @@ import { Link, useParams } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { namedUrls } from '../../routes/routesConfig.js'
 
-const AddressForm = (props) => {
+const AddressForm = ({ address, handleFormSubmit, mode }) => {
   const { t, i18n } = useTranslation()
-  const { addressId } = useParams()
+  const { addressId, contactId } = useParams()
 
   useEffect(() => {
-    console.log(props.mode)
+    console.log(mode)
     console.log(addressId)
+    console.log(contactId)
+    console.log(address)
   }, [])
 
   const formik = useFormik({
@@ -35,20 +37,21 @@ const AddressForm = (props) => {
       address_line_1: '',
       address_line_2: '',
       address_line_3: '',
-      address_line_4: '',
+      city: '',
       postcode: '',
       country: '',
     },
     validationSchema: Yup.object({
       address_line_1: Yup.string().min(3, t('validation.address_line_1.min')).required(t('validation.address_line_1.required')),
-      address_line_2: Yup.string(),
+      address_line_2: Yup.string().min(1, t('validation.address_line_2.min')),
       address_line_3: Yup.string().min(3, t('validation.address_line_3.min')),
-      address_line_4: Yup.string().min(3, t('validation.address_line_4.min')).required(t('validation.address_line_4.required')),
+      city: Yup.string().min(3, t('validation.city.min')).required(t('validation.city.required')),
       postcode: Yup.string().min(4, t('validation.postcode.min')).required(t('validation.postcode.required')),
       country: Yup.string().required(t('validation.country.required')),
     }),
     onSubmit: values => {
       console.log(values)
+      handleFormSubmit(values)
     }
   })
 
@@ -58,7 +61,7 @@ const AddressForm = (props) => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              {t(`addressForm.name_${props.mode}`)}
+              {t(`addressForm.name_${mode}`)}
             </Heading>
           </Center>
         </Box>
@@ -66,7 +69,7 @@ const AddressForm = (props) => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isRequired isInvalid={formik.touched.address_line_1 && formik.errors.address_line_1}>
               <FormLabel htmlFor="address_line_1">{t('addressForm.form.address_line_1')}</FormLabel>
               <Input
@@ -118,20 +121,20 @@ const AddressForm = (props) => {
               ) : null}
             </FormControl>
 
-            <FormControl mb={4} isRequired isInvalid={formik.touched.address_line_4 && formik.errors.address_line_4}>
-              <FormLabel htmlFor="address_line_4">{t('addressForm.form.address_line_4')}</FormLabel>
+            <FormControl mb={4} isRequired isInvalid={formik.touched.city && formik.errors.city}>
+              <FormLabel htmlFor="city">{t('addressForm.form.city')}</FormLabel>
               <Input
-                id="address_line_4"
+                id="city"
                 type="text"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.address_line_4}
+                value={formik.values.city}
 
               />
-              {formik.touched.address_line_4 && formik.errors.address_line_4 ? (
-                <FormErrorMessage>{formik.errors.address_line_4}</FormErrorMessage>
+              {formik.touched.city && formik.errors.city ? (
+                <FormErrorMessage>{formik.errors.city}</FormErrorMessage>
               ) : null}
             </FormControl>
 
@@ -181,7 +184,7 @@ const AddressForm = (props) => {
               variant="solid"
               w="100%"
             >
-              {t(`addressForm.${props.mode}AddressButton`)}
+              {t(`addressForm.${mode}AddressButton`)}
             </Button>
           </form>
         </Box>
@@ -198,7 +201,9 @@ const AddressForm = (props) => {
 }
 
 AddressForm.propTypes = {
-  mode: PropTypes.oneOf(['create', 'edit']).isRequired
+  address: PropTypes.object,
+  mode: PropTypes.oneOf(['create', 'edit']).isRequired,
+  handleFormSubmit: PropTypes.func.isRequired
 }
 
 export default AddressForm
