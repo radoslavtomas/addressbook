@@ -12,7 +12,7 @@ const ContactItem = ({ contact }) => {
     <Stack divider={<StackDivider/>} spacing={4}>
       {showItemDetail && <ContactItemDetail contact={contact}/>}
 
-      {contact.addresses.length && <ContactItemAddress addresses={contact.addresses}/>}
+      {contact.addresses.length && <ContactItemAddress addresses={contact.addresses} contactId={contact.id}/>}
 
       <ContactItemActions contactId={contact.id}/>
     </Stack>

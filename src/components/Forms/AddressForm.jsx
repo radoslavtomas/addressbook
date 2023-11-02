@@ -14,7 +14,7 @@ import {
 import countries from '../../assets/countries.json'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Link, useParams } from 'react-router-dom'
@@ -22,6 +22,14 @@ import PropTypes from 'prop-types'
 import { namedUrls } from '../../routes/routesConfig.js'
 
 const AddressForm = ({ address, handleFormSubmit, mode }) => {
+  const [initialValues, setInitialValues] = useState({
+    address_line_1: '',
+    address_line_2: '',
+    address_line_3: '',
+    city: '',
+    postcode: '',
+    country: '',
+  })
   const { t, i18n } = useTranslation()
   const { addressId, contactId } = useParams()
 
@@ -30,17 +38,28 @@ const AddressForm = ({ address, handleFormSubmit, mode }) => {
     console.log(addressId)
     console.log(contactId)
     console.log(address)
+    if (address) {
+      handleInitialValues()
+    }
   }, [])
 
+  const handleInitialValues = () => {
+    let newInitialValues = { ...initialValues }
+
+    for (const key in newInitialValues) {
+      if (address[key]) {
+        newInitialValues[key] = address[key]
+      }
+    }
+
+    console.log(newInitialValues)
+
+    setInitialValues(newInitialValues)
+  }
+
   const formik = useFormik({
-    initialValues: {
-      address_line_1: '',
-      address_line_2: '',
-      address_line_3: '',
-      city: '',
-      postcode: '',
-      country: '',
-    },
+    enableReinitialize: true,
+    initialValues,
     validationSchema: Yup.object({
       address_line_1: Yup.string().min(3, t('validation.address_line_1.min')).required(t('validation.address_line_1.required')),
       address_line_2: Yup.string().min(1, t('validation.address_line_2.min')),

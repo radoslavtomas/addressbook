@@ -20,7 +20,7 @@ import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 
-const ContactItemAddress = ({ addresses }) => {
+const ContactItemAddress = ({ addresses, contactId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
   const navigate = useNavigate()
@@ -83,12 +83,16 @@ const ContactItemAddress = ({ addresses }) => {
             >
               Delete
             </Button>
+
             <Button
               colorScheme="blue"
               size="sm"
               variant="link"
               rightIcon={<EditIcon/>}
-              onClick={() => navigate(resolveUrl(namedUrls.addressEdit, { addressId: address.id }))}
+              onClick={() => navigate(resolveUrl(namedUrls.addressEdit, {
+                addressId: address.id,
+                contactId: contactId
+              }))}
             >
               Edit Address
             </Button>
@@ -101,7 +105,8 @@ const ContactItemAddress = ({ addresses }) => {
 }
 
 ContactItemAddress.propTypes = {
-  addresses: PropTypes.array.isRequired
+  addresses: PropTypes.array.isRequired,
+  contactId: PropTypes.number.isRequired
 }
 
 export default ContactItemAddress
