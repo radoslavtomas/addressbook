@@ -10,3 +10,10 @@ export const updateAddress = async (contactId, addressId, data) => {
   const response = await axiosClient.post(`/contacts/${contactId}/addresses/${addressId}`, data)
   return response.data
 }
+
+export const deleteAddress = async (contactId, addressId) => {
+  const response = await axiosClient.post(`/contacts/${contactId}/addresses/${addressId}`, {
+    _method: 'DELETE'
+  })
+  return response.data
+}

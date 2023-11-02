@@ -10,6 +10,8 @@ import {
   Button,
   Heading,
   HStack,
+  Stack,
+  StackDivider,
   Text,
   useDisclosure
 } from '@chakra-ui/react'
@@ -19,6 +21,7 @@ import { useRef } from 'react'
 import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import { deleteAddress } from '../../api/addressApi.js'
 
 const ContactItemAddress = ({ addresses, contactId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -33,9 +36,27 @@ const ContactItemAddress = ({ addresses, contactId }) => {
     return country[0][`name_${i18n.language}`]
   }
 
+  const handleDeleteAddress = async (addressId) => {
+    console.log('yep, delete')
+    try {
+      const result = await deleteAddress(contactId, addressId)
+      console.log(result)
+
+      onClose()
+
+      navigate(namedUrls.getUser, {
+        state: {
+          redirectTo: namedUrls.contacts
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
-    addresses.map(address => {
-      return (
+    <Stack divider={<StackDivider borderColor="green.200"/>} spacing={6}>
+      {addresses.map(address =>
         <Box key={address.id}>
           <AlertDialog
             isOpen={isOpen}
@@ -56,7 +77,7 @@ const ContactItemAddress = ({ addresses, contactId }) => {
                   <Button ref={cancelRef} onClick={onClose}>
                     Cancel
                   </Button>
-                  <Button colorScheme="red" onClick={onClose} ml={3}>
+                  <Button colorScheme="red" onClick={() => handleDeleteAddress(address.id)} ml={3}>
                     Delete
                   </Button>
                 </AlertDialogFooter>
@@ -98,9 +119,8 @@ const ContactItemAddress = ({ addresses, contactId }) => {
             </Button>
           </HStack>
         </Box>
-      )
-    })
-
+      )}
+    </Stack>
   )
 }
 

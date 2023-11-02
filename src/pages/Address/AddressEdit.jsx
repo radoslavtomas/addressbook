@@ -46,6 +46,7 @@ const AddressEdit = () => {
       })
     } catch (err) {
       // TODO: handle error
+      console.log('We have error')
       console.log(err)
     }
   }
