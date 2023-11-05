@@ -13,6 +13,7 @@ import {
   Stack,
   StackDivider,
   Text,
+  useColorModeValue,
   useDisclosure
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
@@ -54,10 +55,12 @@ const ContactItemAddress = ({ addresses, contactId }) => {
     }
   }
 
+  const leftBorderColor = useColorModeValue('orange.300', 'orange.600')
+
   return (
-    <Stack divider={<StackDivider borderColor="green.200"/>} spacing={6}>
+    <Stack divider={<StackDivider/>} spacing={6}>
       {addresses.map(address =>
-        <Box key={address.id}>
+        <Box borderLeft="4px" borderColor={leftBorderColor} pl={4} key={address.id}>
           <AlertDialog
             isOpen={isOpen}
             leastDestructiveRef={cancelRef}
