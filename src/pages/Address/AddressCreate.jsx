@@ -1,5 +1,5 @@
 import AddressForm from '../../components/Forms/AddressForm.jsx'
-import { Alert, AlertIcon, Center, Container, Spinner } from '@chakra-ui/react'
+import { Alert, AlertIcon, Center, Container, Spinner, useToast } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
 import { storeAddress } from '../../api/addressApi.js'
@@ -12,6 +12,7 @@ const AddressCreate = () => {
   const navigate = useNavigate()
   const { contactId } = useParams()
   const user = useSelector((state) => state.user.user)
+  const toast = useToast()
 
   useEffect(() => {
     const contact = user.contacts.filter(item => item.id === parseInt(contactId))
@@ -29,6 +30,13 @@ const AddressCreate = () => {
       const response = await storeAddress(contactId, data)
       setIsLoading(false)
       console.log(response)
+
+      toast({
+        description: 'Your address has been successfully created',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
 
       navigate(namedUrls.getUser, {
         state: {

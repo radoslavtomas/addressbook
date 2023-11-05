@@ -14,7 +14,8 @@ import {
   StackDivider,
   Text,
   useColorModeValue,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
@@ -29,6 +30,7 @@ const ContactItemAddress = ({ addresses, contactId }) => {
   const cancelRef = useRef()
   const navigate = useNavigate()
   const { i18n } = useTranslation()
+  const toast = useToast()
 
   const getCountryName = (code) => {
     const country = countries.filter(country => country.code === code)
@@ -38,10 +40,15 @@ const ContactItemAddress = ({ addresses, contactId }) => {
   }
 
   const handleDeleteAddress = async (addressId) => {
-    console.log('yep, delete')
     try {
-      const result = await deleteAddress(contactId, addressId)
-      console.log(result)
+      await deleteAddress(contactId, addressId)
+
+      toast({
+        description: 'The address has been successfully deleted',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
 
       onClose()
 
