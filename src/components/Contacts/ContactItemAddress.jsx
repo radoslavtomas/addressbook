@@ -1,11 +1,5 @@
 import countries from '../../assets/countries.json'
 import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
   Box,
   Button,
   Heading,
@@ -15,22 +9,18 @@ import {
   Text,
   useColorModeValue,
   useDisclosure,
-  useToast
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
-import { useRef } from 'react'
 import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
-import { deleteAddress } from '../../api/addressApi.js'
+import ContactItemAddressDelete from './ContactItemAddressDelete.jsx'
 
 const ContactItemAddress = ({ addresses, contactId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = useRef()
   const navigate = useNavigate()
   const { i18n } = useTranslation()
-  const toast = useToast()
 
   const getCountryName = (code) => {
     const country = countries.filter(country => country.code === code)
@@ -39,61 +29,20 @@ const ContactItemAddress = ({ addresses, contactId }) => {
     return country[0][`name_${i18n.language}`]
   }
 
-  const handleDeleteAddress = async (addressId) => {
-    try {
-      await deleteAddress(contactId, addressId)
-
-      toast({
-        description: 'The address has been successfully deleted',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      })
-
-      onClose()
-
-      navigate(namedUrls.getUser, {
-        state: {
-          redirectTo: namedUrls.contacts
-        }
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const leftBorderColor = useColorModeValue('orange.300', 'orange.600')
 
   return (
     <Stack divider={<StackDivider/>} spacing={6}>
       {addresses.map(address =>
         <Box borderLeft="4px" borderColor={leftBorderColor} pl={4} key={address.id}>
-          <AlertDialog
-            isOpen={isOpen}
-            leastDestructiveRef={cancelRef}
+
+          <ContactItemAddressDelete
             onClose={onClose}
-          >
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Delete address for {address.city}
-                </AlertDialogHeader>
-
-                <AlertDialogBody>
-                  Are you sure? You cannot undo this action afterwards.
-                </AlertDialogBody>
-
-                <AlertDialogFooter>
-                  <Button ref={cancelRef} onClick={onClose}>
-                    Cancel
-                  </Button>
-                  <Button colorScheme="red" onClick={() => handleDeleteAddress(address.id)} ml={3}>
-                    Delete
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          </AlertDialog>
+            isOpen={isOpen}
+            contactId={contactId}
+            addressId={address.id}
+            addressCity={address.city}
+          />
 
           <Heading size="xs" textTransform="uppercase">
             Address for {address.city}
