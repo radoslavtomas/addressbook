@@ -1,5 +1,6 @@
 import { Box, Text } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
+import ContactItemActions from './ContactItemActions.jsx'
 
 const ContactItemDetail = ({ contact }) => {
   const { date_of_birth, email, phone } = contact
@@ -19,11 +20,14 @@ const ContactItemDetail = ({ contact }) => {
   }
 
   return (
-    <Box>
-      {date_of_birth && <Text pt="2" fontSize="sm">Date of birth: {format_date(date_of_birth)}</Text>}
-      {email && <Text pt="2" fontSize="sm">Email: {email}</Text>}
-      {phone && <Text pt="2" fontSize="sm">Phone: {phone}</Text>}
-    </Box>
+    <>
+      <Box>
+        {date_of_birth && <Text pt="2" fontSize="sm">Date of birth: {format_date(date_of_birth)}</Text>}
+        {email && <Text pt="2" fontSize="sm">Email: {email}</Text>}
+        {phone && <Text pt="2" fontSize="sm">Phone: {phone}</Text>}
+      </Box>
+      <ContactItemActions contactId={contact.id}/>
+    </>
   )
 }
 

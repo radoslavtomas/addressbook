@@ -9,8 +9,10 @@ const ContactItemActions = ({ contactId }) => {
 
   return (
     <Box py={6}>
-      <Flex justifyContent="center" direction={{ base: 'column-reverse', sm: 'row' }} gap={4}>
+      <Flex justifyContent="center" wrap="wrap-reverse" gap={4}>
         <Button
+          variant="link"
+          size="sm"
           colorScheme="orange"
           rightIcon={<SettingsIcon/>}
           onClick={() => navigate(resolveUrl(namedUrls.contactsEdit, { contactId: contactId }))}
@@ -18,6 +20,8 @@ const ContactItemActions = ({ contactId }) => {
           Manage contact
         </Button>
         <Button
+          variant="link"
+          size="sm"
           colorScheme="green"
           rightIcon={<EmailIcon/>}
           onClick={() => navigate(resolveUrl(namedUrls.addressCreate, { contactId: contactId }))}

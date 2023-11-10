@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { namedUrls } from '../../routes/routesConfig.js'
+import ContactDelete from '../Contacts/ContactDelete.jsx'
 
 const ContactForm = ({ contact, handleFormSubmit, mode }) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -46,8 +47,6 @@ const ContactForm = ({ contact, handleFormSubmit, mode }) => {
         newInitialValues[key] = contact[key]
       }
     }
-
-    console.log(newInitialValues)
 
     setInitialValues(newInitialValues)
   }
@@ -200,6 +199,13 @@ const ContactForm = ({ contact, handleFormSubmit, mode }) => {
             color={useColorModeValue('orange.600', 'gray.400')}>{t('contactForm.backToContacts')}</Text></Link>
         </Center>
       </Box>
+
+      {mode === 'edit' &&
+        <Box mt={10} delay={0.2}>
+          <ContactDelete
+            fullName={`${formik.values.first_names} ${formik.values.last_name}`}
+            contactId={contact.id}/>
+        </Box>}
     </>
   )
 }
