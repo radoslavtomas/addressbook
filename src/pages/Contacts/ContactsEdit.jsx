@@ -28,8 +28,7 @@ const ContactsEdit = () => {
     setIsLoading(true)
 
     try {
-      const response = await updateContact(contactId, data)
-      console.log(response)
+      await updateContact(contactId, data)
 
       toast({
         description: 'Your contact has been successfully updated',

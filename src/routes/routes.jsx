@@ -35,6 +35,10 @@ const routes = [
         element: <Register/>
       },
       {
+        path: namedUrls.resetPassword,
+        element: <PasswordReset/>
+      },
+      {
         path: namedUrls.getUser,
         element: <GetUser/>
       },
@@ -45,10 +49,6 @@ const routes = [
       {
         path: namedUrls.updatePassword,
         element: <PrivateRoute><UpdatePassword/></PrivateRoute>
-      },
-      {
-        path: namedUrls.resetPassword,
-        element: <PrivateRoute><PasswordReset/></PrivateRoute>
       },
       {
         path: namedUrls.contacts,

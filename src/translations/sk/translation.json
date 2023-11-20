@@ -91,7 +91,8 @@
     "backToLogin": "Späť na prihlásenie",
     "responseSuccessTitle": "Skvelé!",
     "responseSuccessMessage": "Poslali sme ti link na zmenu hesla",
-    "responseError": "Niekde sa stala chyba a nepodarilo sa nám odoslať ti email. Skús to, prosím, neskôr."
+    "responseError": "Niekde sa stala chyba a nepodarilo sa nám odoslať ti email. Skús to, prosím, neskôr",
+    "responseNoUser": "Zadanú emailovú adresu neevidujeme"
   },
   "validation": {
     "name": {

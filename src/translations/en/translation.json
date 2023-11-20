@@ -91,7 +91,8 @@
     "backToLogin": "Back to Login",
     "responseSuccessTitle": "Success!",
     "responseSuccessMessage": "We have emailed you your password reset link",
-    "responseError": "There was an error when sending you the email. Please, try again later."
+    "responseError": "There was an error when sending you the email. Please, try again later",
+    "responseNoUser": "We can't find a user with that email address"
   },
   "validation": {
     "name": {

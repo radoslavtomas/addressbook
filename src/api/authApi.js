@@ -38,3 +38,13 @@ export const logout = async () => {
 
   return response.data
 }
+
+export const resetPassword = async ({ email, reset_url }) => {
+  const response = await axiosClient({
+    method: 'POST',
+    url: '/forgot-password',
+    data: { email, reset_url }
+  })
+
+  return response.data
+}

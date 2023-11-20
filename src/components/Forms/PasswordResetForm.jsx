@@ -2,8 +2,6 @@ import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {
-  Alert,
-  AlertIcon,
   Box,
   Button,
   Center,
@@ -19,8 +17,9 @@ import {
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
+import PropTypes from 'prop-types'
 
-const PasswordResetForm = () => {
+const PasswordResetForm = ({ handlePasswordReset }) => {
   const { t } = useTranslation()
   const toast = useToast()
 
@@ -33,6 +32,7 @@ const PasswordResetForm = () => {
     }),
     onSubmit: values => {
       console.log(values)
+      handlePasswordReset(values)
     }
   })
 
@@ -51,10 +51,10 @@ const PasswordResetForm = () => {
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
 
-          <Alert mb={6} borderRadius={4} status="error">
-            <AlertIcon/>
-            {t('resetPasswordForm.responseError')}
-          </Alert>
+          {/*<Alert mb={6} borderRadius={4} status="error">*/}
+          {/*  <AlertIcon/>*/}
+          {/*  {t('resetPasswordForm.responseError')}*/}
+          {/*</Alert>*/}
 
           <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isInvalid={formik.touched.email && formik.errors.email}>
@@ -80,15 +80,6 @@ const PasswordResetForm = () => {
               colorScheme="orange"
               variant="solid"
               w="100%"
-              onClick={() =>
-                toast({
-                  title: t('resetPasswordForm.responseSuccessTitle'),
-                  description: t('resetPasswordForm.responseSuccessMessage'),
-                  status: 'success',
-                  duration: 9000,
-                  isClosable: true,
-                })
-              }
             >
               {t('resetPasswordForm.resetButton')}
             </Button>
@@ -104,6 +95,10 @@ const PasswordResetForm = () => {
       </Box>
     </>
   )
+}
+
+PasswordResetForm.propTypes = {
+  handlePasswordReset: PropTypes.func.isRequired
 }
 
 export default PasswordResetForm
