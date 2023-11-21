@@ -18,12 +18,13 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { namedUrls } from '../../routes/routesConfig.js'
+import passwordRegex from '../../services/regex/password.js'
 
 const RegisterForm = ({ handleRegistration }) => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
 
-  const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
+  // const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/
   // in case we would need special character as well
   // const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*.-]).{8,}$/
 

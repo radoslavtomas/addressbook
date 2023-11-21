@@ -76,9 +76,9 @@
   "updatePasswordForm": {
     "name": "Zmeň heslo",
     "form": {
-      "currentPassword": "Aktuálne heslo",
-      "newPassword": "Nové heslo",
-      "confirmPassword": "Potvrď nové heslo"
+      "current_password": "Aktuálne heslo",
+      "password": "Nové heslo",
+      "password_confirmation": "Potvrď nové heslo"
     },
     "savePasswordButton": "Ulož heslo"
   },
@@ -120,7 +120,8 @@
     "password": {
       "required": "Heslo je povinný údaj",
       "min": "Heslo musí obsahovať aspoň 8 znakov",
-      "matches": "Heslo musí obsahovať aspoň jedno veľké písmeno, jedno malé písmeno a jednu číslicu"
+      "matches": "Heslo musí obsahovať aspoň jedno veľké písmeno, jedno malé písmeno a jednu číslicu",
+      "confirm": "Potvrdenie hesla a nezhoduje s novým heslom"
     },
     "address_line_1": {
       "required": "Ulica is required",

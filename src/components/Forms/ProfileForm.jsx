@@ -5,22 +5,27 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
+import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
-const ProfileForm = () => {
+const ProfileForm = ({ handleUpdateProfile }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const user = useSelector((state) => state.user.user)
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: ''
+      name: user.name,
+      email: user.email
     },
     validationSchema: Yup.object({
       name: Yup.string().min(2, t('validation.name.min')).required(t('validation.name.required')),
       email: Yup.string().email(t('validation.email.invalidFormat')).required(t('validation.email.required'))
     }),
     onSubmit: values => {
+      values['user_id'] = user.id
       console.log(values)
+      handleUpdateProfile(values)
     }
   })
 
@@ -38,7 +43,7 @@ const ProfileForm = () => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isRequired isInvalid={formik.touched.name && formik.errors.name}>
               <FormLabel htmlFor="name">{t('profileForm.form.name')}</FormLabel>
               <Input
@@ -98,6 +103,10 @@ const ProfileForm = () => {
       </Box>
     </>
   )
+}
+
+ProfileForm.propTypes = {
+  handleUpdateProfile: PropTypes.func.isRequired
 }
 
 export default ProfileForm

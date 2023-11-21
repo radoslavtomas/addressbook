@@ -16,23 +16,36 @@ import { useTranslation } from 'react-i18next'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { namedUrls } from '../../routes/routesConfig.js'
+import PropTypes from 'prop-types'
+import passwordRegex from '../../services/regex/password.js'
 
-const UpdatePasswordForm = () => {
+const UpdatePasswordForm = ({ handleUpdatePassword }) => {
   const { t } = useTranslation()
 
   const formik = useFormik({
     initialValues: {
-      currentPassword: '',
-      newPassword: '',
-      confirmPassword: ''
+      current_password: '',
+      password: '',
+      password_confirmation: ''
     },
     validationSchema: Yup.object({
-      currentPassword: Yup.string().min(6, t('validation.currentPassword.min')).required(t('validation.currentPassword.required')),
-      newPassword: Yup.string().min(6, t('validation.newPassword.min')).required(t('validation.newPassword.required')),
-      confirmPassword: Yup.string().min(6, t('validation.confirmPassword.min')).required(t('validation.confirmPassword.required'))
+      current_password: Yup.string()
+        .min(8, t('validation.password.min'))
+        .required(t('validation.password.required')),
+      password: Yup.string()
+        .min(8, t('validation.password.min'))
+        .matches(passwordRegex, t('validation.password.matches'))
+        .required(t('validation.password.required')),
+      password_confirmation: Yup.string()
+        .min(8, t('validation.password.min'))
+        .matches(passwordRegex, t('validation.password.matches'))
+        .oneOf([Yup.ref('password'), null], t('validation.password.confirm'))
+        .required(t('validation.password.required'))
     }),
     onSubmit: values => {
       console.log(values)
+
+      handleUpdatePassword(values)
     }
   })
 
@@ -50,27 +63,28 @@ const UpdatePasswordForm = () => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-          <form>
-            <FormControl mb={8} isRequired isInvalid={formik.touched.password && formik.errors.password}>
-              <FormLabel htmlFor="currentPassword">{t('updatePasswordForm.form.currentPassword')}</FormLabel>
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl mb={8} isRequired
+                         isInvalid={formik.touched.current_password && formik.errors.current_password}>
+              <FormLabel htmlFor="current_password">{t('updatePasswordForm.form.current_password')}</FormLabel>
               <Input
-                id="currentPassword"
+                id="current_password"
                 type="password"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.password}
+                value={formik.values.current_password}
               />
-              {formik.touched.currentPassword && formik.errors.currentPassword ? (
-                <FormErrorMessage>{formik.errors.currentPassword}</FormErrorMessage>
+              {formik.touched.current_password && formik.errors.current_password ? (
+                <FormErrorMessage>{formik.errors.current_password}</FormErrorMessage>
               ) : null}
             </FormControl>
 
             <FormControl mb={8} isRequired isInvalid={formik.touched.password && formik.errors.password}>
-              <FormLabel htmlFor="newPassword">{t('updatePasswordForm.form.newPassword')}</FormLabel>
+              <FormLabel htmlFor="password">{t('updatePasswordForm.form.password')}</FormLabel>
               <Input
-                id="newPassword"
+                id="password"
                 type="password"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
@@ -78,24 +92,26 @@ const UpdatePasswordForm = () => {
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
               />
-              {formik.touched.newPassword && formik.errors.newPassword ? (
-                <FormErrorMessage>{formik.errors.newPassword}</FormErrorMessage>
+              {formik.touched.password && formik.errors.password ? (
+                <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
               ) : null}
             </FormControl>
 
-            <FormControl mb={8} isRequired isInvalid={formik.touched.password && formik.errors.password}>
-              <FormLabel htmlFor="confirmPassword">{t('updatePasswordForm.form.confirmPassword')}</FormLabel>
+            <FormControl mb={8} isRequired
+                         isInvalid={formik.touched.password_confirmation && formik.errors.password_confirmation}>
+              <FormLabel
+                htmlFor="password_confirmation">{t('updatePasswordForm.form.password_confirmation')}</FormLabel>
               <Input
-                id="confirmPassword"
+                id="password_confirmation"
                 type="password"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.password}
+                value={formik.values.password_confirmation}
               />
-              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                <FormErrorMessage>{formik.errors.confirmPassword}</FormErrorMessage>
+              {formik.touched.password_confirmation && formik.errors.password_confirmation ? (
+                <FormErrorMessage>{formik.errors.password_confirmation}</FormErrorMessage>
               ) : null}
             </FormControl>
 
@@ -124,6 +140,10 @@ const UpdatePasswordForm = () => {
       </Box>
     </>
   )
+}
+
+UpdatePasswordForm.propTypes = {
+  handleUpdatePassword: PropTypes.func.isRequired
 }
 
 export default UpdatePasswordForm

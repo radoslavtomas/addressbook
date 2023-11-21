@@ -21,8 +21,6 @@ const GetUser = () => {
         setUser(() => user.data)
         setIsLoading(() => false)
       } catch (error) {
-        console.log('in error')
-        console.log(error)
         setError(error.response.data.message)
         setIsLoading(() => false)
       }
