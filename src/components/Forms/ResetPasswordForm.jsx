@@ -1,39 +1,32 @@
-import {
-  Box,
-  Button,
-  Center,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  Text,
-  useColorModeValue
-} from '@chakra-ui/react'
+import { Box, Button, Center, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { namedUrls } from '../../routes/routesConfig.js'
-import PropTypes from 'prop-types'
 import passwordRegex from '../../services/regex/password.js'
-import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { useLocation, useParams } from 'react-router-dom'
 
-const UpdatePasswordForm = ({ handleUpdatePassword }) => {
+const ResetPasswordForm = ({ handleResetPassword }) => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
+  const location = useLocation()
+  const { token } = useParams('token')
+
+  const initialValues = {
+    email: new URLSearchParams(location.search).get('email') ?? '',
+    password: '',
+    password_confirmation: ''
+  }
 
   const formik = useFormik({
-    initialValues: {
-      current_password: '',
-      password: '',
-      password_confirmation: ''
-    },
+    initialValues,
+    enableReinitialize: true,
     validationSchema: Yup.object({
-      current_password: Yup.string()
-        .min(8, t('validation.password.min'))
-        .required(t('validation.password.required')),
+      email: Yup.string()
+        .email(t('validation.email.invalidFormat'))
+        .required(t('validation.email.required')),
       password: Yup.string()
         .min(8, t('validation.password.min'))
         .matches(passwordRegex, t('validation.password.matches'))
@@ -45,9 +38,10 @@ const UpdatePasswordForm = ({ handleUpdatePassword }) => {
         .required(t('validation.password.required'))
     }),
     onSubmit: async (values) => {
+      values['token'] = token
       console.log(values)
       setIsLoading(true)
-      await handleUpdatePassword(values)
+      await handleResetPassword(values)
       setIsLoading(false)
     }
   })
@@ -58,7 +52,7 @@ const UpdatePasswordForm = ({ handleUpdatePassword }) => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              {t('updatePasswordForm.name')}
+              {t('resetPasswordForm.name')}
             </Heading>
           </Center>
         </Box>
@@ -68,19 +62,19 @@ const UpdatePasswordForm = ({ handleUpdatePassword }) => {
         <Box maxW="350px" mx="auto">
           <form onSubmit={formik.handleSubmit}>
             <FormControl mb={8} isRequired
-                         isInvalid={formik.touched.current_password && formik.errors.current_password}>
-              <FormLabel htmlFor="current_password">{t('updatePasswordForm.form.current_password')}</FormLabel>
+                         isInvalid={formik.touched.email && formik.errors.email}>
+              <FormLabel htmlFor="email">{t('resetPasswordForm.form.email')}</FormLabel>
               <Input
-                id="current_password"
-                type="password"
+                id="email"
+                type="email"
                 errorBorderColor="red.400"
                 focusBorderColor="gray.500"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.current_password}
+                value={formik.values.email}
               />
-              {formik.touched.current_password && formik.errors.current_password ? (
-                <FormErrorMessage>{formik.errors.current_password}</FormErrorMessage>
+              {formik.touched.email && formik.errors.email ? (
+                <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
               ) : null}
             </FormControl>
 
@@ -126,25 +120,18 @@ const UpdatePasswordForm = ({ handleUpdatePassword }) => {
               variant="solid"
               w="100%"
             >
-              {t('updatePasswordForm.savePasswordButton')}
+              {t('resetPasswordForm.savePasswordButton')}
             </Button>
 
           </form>
         </Box>
       </Box>
-
-      <Box delay={0.2}>
-        <Center textTransform={'uppercase'}>
-          <Link to={namedUrls.contacts}><Text
-            color={useColorModeValue('orange.600', 'gray.400')}>{t('updatePasswordForm.backToContacts')}</Text></Link>
-        </Center>
-      </Box>
     </>
   )
 }
 
-UpdatePasswordForm.propTypes = {
-  handleUpdatePassword: PropTypes.func.isRequired
+ResetPasswordForm.propTypes = {
+  handleResetPassword: PropTypes.func.isRequired
 }
 
-export default UpdatePasswordForm
+export default ResetPasswordForm

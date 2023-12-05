@@ -1,31 +1,31 @@
-import PasswordResetForm from '../../components/Forms/PasswordResetForm.jsx'
+import ForgotPasswordForm from '../../components/Forms/ForgotPasswordForm.jsx'
 import { Alert, AlertIcon, Box, Container, useToast } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { resetPassword } from '../../api/authApi.js'
+import { forgotPassword } from '../../api/authApi.js'
 import { useTranslation } from 'react-i18next'
 
-const PasswordReset = () => {
+const ForgotPassword = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const toast = useToast()
   const { t } = useTranslation()
   const resetUrl = 'http://localhost:5137'
 
-  const handlePasswordReset = async (data) => {
+  const handleForgotPassword = async (data) => {
     console.log('YAYA')
     data['reset_url'] = resetUrl
     console.log(data)
     setError('')
 
     try {
-      const response = await resetPassword(data)
+      const response = await forgotPassword(data)
 
       if (!response.success) {
-        setError(t('resetPasswordForm.responseNoUser'))
+        setError(t('forgotPasswordForm.responseNoUser'))
 
         toast({
-          description: t('resetPasswordForm.responseError'),
+          description: t('forgotPasswordForm.responseError'),
           status: 'error',
           duration: 5000,
           isClosable: true,
@@ -35,8 +35,8 @@ const PasswordReset = () => {
       }
 
       toast({
-        title: t('resetPasswordForm.responseSuccessTitle'),
-        description: t('resetPasswordForm.responseSuccessMessage'),
+        title: t('forgotPasswordForm.responseSuccessTitle'),
+        description: t('forgotPasswordForm.responseSuccessMessage'),
         status: 'success',
         duration: 5000,
         isClosable: true,
@@ -51,7 +51,7 @@ const PasswordReset = () => {
     } catch (err) {
       console.log(err)
       setError(err.response.data.message)
-      // setError(t('resetPasswordForm.responseError'))
+      // setError(t('forgotPasswordForm.responseError'))
     }
   }
   return (
@@ -63,9 +63,9 @@ const PasswordReset = () => {
         </Alert>
       </Box>}
 
-      <PasswordResetForm handlePasswordReset={handlePasswordReset}/>
+      <ForgotPasswordForm handleForgotPassword={handleForgotPassword}/>
     </Container>
   )
 }
 
-export default PasswordReset
+export default ForgotPassword

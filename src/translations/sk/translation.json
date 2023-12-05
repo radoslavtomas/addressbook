@@ -10,7 +10,7 @@
     "profile": "Profil"
   },
   "index": {
-    "heroMessage": "Moderný adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou"
+    "heroMessage": "Starý dobrý adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou"
   },
   "registerForm": {
     "name": "Registrácia",
@@ -30,8 +30,8 @@
     },
     "noAccount": "Nemáš účet?",
     "registerHere": "Zaregistruj sa",
-    "forgotPassword": "Zabudnuté heslo?",
-    "resetHere": "Zmeň si ho"
+    "forgotPassword": "Nepamätáš si prihlasovacie údaje?",
+    "resetHere": "Zmeniť zabudnuté heslo"
   },
   "contactForm": {
     "name_create": "Pridaj kontakt",
@@ -70,7 +70,7 @@
       "email": "Email"
     },
     "updateProfileButton": "Ulož zmeny",
-    "backToContacts": "späť na kontakty",
+    "backToContacts": "Späť na kontakty",
     "cancel": "Zrušiť"
   },
   "updatePasswordForm": {
@@ -80,9 +80,25 @@
       "password": "Nové heslo",
       "password_confirmation": "Potvrď nové heslo"
     },
-    "savePasswordButton": "Ulož heslo"
+    "savePasswordButton": "Ulož heslo",
+    "backToContacts": "Back to contacts",
+    "responseIncorrectPassword": "Nesprávne aktuálne heslo"
   },
   "resetPasswordForm": {
+    "name": "Zmeň zabudnuté heslo",
+    "form": {
+      "email": "Email",
+      "password": "Nové heslo",
+      "password_confirmation": "Potvrď nové heslo"
+    },
+    "savePasswordButton": "Zmeň heslo",
+    "responseIncorrectPassword": "Nesprávne aktuálne heslo",
+    "responseSuccessTitle": "Skvelé!",
+    "responseSuccessMessage": "Heslo bolo úspešne zmenené",
+    "This password reset token is invalid.": "Token na zmenu hesla je neplatný",
+    "We can't find a user with that email address.": "Zadanú emailovú adresu neevidujeme"
+  },
+  "forgotPasswordForm": {
     "name": "Zmeniť zabudnuté heslo",
     "form": {
       "email": "Email"

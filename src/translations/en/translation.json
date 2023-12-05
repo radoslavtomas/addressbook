@@ -10,7 +10,7 @@
     "profile": "Profile"
   },
   "index": {
-    "heroMessage": "Modern address book for online era to help you stay in touch with friends and family"
+    "heroMessage": "Good old address book for online era to help you stay in touch with friends and family"
   },
   "registerForm": {
     "name": "Register",
@@ -80,9 +80,25 @@
       "password": "New Password",
       "password_confirmation": "Confirm password"
     },
-    "savePasswordButton": "Save password"
+    "savePasswordButton": "Save password",
+    "backToContacts": "Back to contacts",
+    "responseIncorrectPassword": "The current password is incorrect"
   },
   "resetPasswordForm": {
+    "name": "Reset Password",
+    "form": {
+      "email": "Email",
+      "password": "New Password",
+      "password_confirmation": "Confirm password"
+    },
+    "savePasswordButton": "Reset password",
+    "responseIncorrectPassword": "The current password is incorrect",
+    "responseSuccessTitle": "Success!",
+    "responseSuccessMessage": "You have successfully reset your password",
+    "This password reset token is invalid.": "This password reset token is invalid",
+    "We can't find a user with that email address.": "We can't find a user with that email address"
+  },
+  "forgotPasswordForm": {
     "name": "Reset your password",
     "form": {
       "email": "Email"

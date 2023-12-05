@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
 import PropTypes from 'prop-types'
 
-const PasswordResetForm = ({ handlePasswordReset }) => {
+const ForgotPasswordForm = ({ handleForgotPassword }) => {
   const { t } = useTranslation()
   const toast = useToast()
 
@@ -32,7 +32,7 @@ const PasswordResetForm = ({ handlePasswordReset }) => {
     }),
     onSubmit: values => {
       console.log(values)
-      handlePasswordReset(values)
+      handleForgotPassword(values)
     }
   })
 
@@ -42,7 +42,7 @@ const PasswordResetForm = ({ handlePasswordReset }) => {
         <Box flexGrow={1}>
           <Center>
             <Heading as="h2" variant="page-title" textAlign="center">
-              {t('resetPasswordForm.name')}
+              {t('forgotPasswordForm.name')}
             </Heading>
           </Center>
         </Box>
@@ -53,12 +53,12 @@ const PasswordResetForm = ({ handlePasswordReset }) => {
 
           {/*<Alert mb={6} borderRadius={4} status="error">*/}
           {/*  <AlertIcon/>*/}
-          {/*  {t('resetPasswordForm.responseError')}*/}
+          {/*  {t('forgotPasswordForm.responseError')}*/}
           {/*</Alert>*/}
 
           <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isInvalid={formik.touched.email && formik.errors.email}>
-              <FormLabel htmlFor="email">{t('resetPasswordForm.form.email')}</FormLabel>
+              <FormLabel htmlFor="email">{t('forgotPasswordForm.form.email')}</FormLabel>
               <Input
                 id="email"
                 type="email"
@@ -81,7 +81,7 @@ const PasswordResetForm = ({ handlePasswordReset }) => {
               variant="solid"
               w="100%"
             >
-              {t('resetPasswordForm.resetButton')}
+              {t('forgotPasswordForm.resetButton')}
             </Button>
           </form>
         </Box>
@@ -90,15 +90,15 @@ const PasswordResetForm = ({ handlePasswordReset }) => {
       <Box delay={0.2}>
         <Center textTransform={'uppercase'}>
           <Link to={namedUrls.login}><Text
-            color={useColorModeValue('orange.600', 'gray.400')}>{t('resetPasswordForm.backToLogin')}</Text></Link>
+            color={useColorModeValue('orange.600', 'gray.400')}>{t('forgotPasswordForm.backToLogin')}</Text></Link>
         </Center>
       </Box>
     </>
   )
 }
 
-PasswordResetForm.propTypes = {
-  handlePasswordReset: PropTypes.func.isRequired
+ForgotPasswordForm.propTypes = {
+  handleForgotPassword: PropTypes.func.isRequired
 }
 
-export default PasswordResetForm
+export default ForgotPasswordForm
