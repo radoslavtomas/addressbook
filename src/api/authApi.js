@@ -1,7 +1,7 @@
 import { axiosClient, baseURL } from './config/axiosClient.js'
 
 export const register = async ({ name, email, password }) => {
-  const response = await axiosClient.post('/auth/register', { name, email, password })
+  const response = await axiosClient.post('/register', { name, email, password })
   return response.data
 }
 
@@ -42,7 +42,7 @@ export const logout = async () => {
 export const forgotPassword = async ({ email, reset_url }) => {
   const response = await axiosClient({
     method: 'POST',
-    url: '/forgot-password',
+    url: '/forgot-passwordd',
     data: { email, reset_url }
   })
 

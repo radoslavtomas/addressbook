@@ -3,9 +3,11 @@ import { EmailIcon, SettingsIcon } from '@chakra-ui/icons'
 import { useNavigate } from 'react-router-dom'
 import { namedUrls, resolveUrl } from '../../routes/routesConfig.js'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 const ContactItemActions = ({ contactId }) => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   return (
     <Box py={6}>
@@ -17,7 +19,7 @@ const ContactItemActions = ({ contactId }) => {
           rightIcon={<SettingsIcon/>}
           onClick={() => navigate(resolveUrl(namedUrls.contactsEdit, { contactId: contactId }))}
         >
-          Manage contact
+          {t('manageContact')}
         </Button>
         <Button
           variant="link"
@@ -26,7 +28,7 @@ const ContactItemActions = ({ contactId }) => {
           rightIcon={<EmailIcon/>}
           onClick={() => navigate(resolveUrl(namedUrls.addressCreate, { contactId: contactId }))}
         >
-          Add new address
+          {t('addNewAddress')}
         </Button>
       </Flex>
     </Box>

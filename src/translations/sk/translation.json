@@ -3,14 +3,19 @@
   "loginButton": "Prihlás sa",
   "registerButton": "Zaregistruj sa",
   "logoutButton": "Odhlásiť",
+  "contacts": "Kontakty",
   "myContactsButton": "Moje kontakty",
+  "addNewContact": "Pridaj nový kontakt",
+  "manageContact": "Uprav kontakt",
+  "addNewAddress": "Pridaj novú adresu",
   "navigation": {
     "contacts": "Moje kontakty",
     "addContact": "Pridaj kontakt",
     "profile": "Profil"
   },
-  "index": {
-    "heroMessage": "Starý dobrý adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou"
+  "indexes": {
+    "heroMessage": "Starý dobrý adresár, ktorý Ti pomôže zostať v kontakte s priateľmi a rodinou",
+    "contactsEmpty": "Zatiaľ žiadne kontakty."
   },
   "registerForm": {
     "name": "Registrácia",
@@ -38,7 +43,7 @@
     "name_edit": "Uprav kontakt",
     "form": {
       "first_names": "Meno",
-      "lastname": "Priezvisko",
+      "last_name": "Priezvisko",
       "date_of_birth": "Dátum narodenia",
       "phone": "Telefón",
       "email": "Email"
@@ -163,6 +168,7 @@
   },
   "errors": {
     "registration": "Registrácia sa nepodarila. Skúste to, prosím, neskôr.",
-    "login": "Zadané údaje sa nezhodujú s našimi záznamami v databáze"
+    "login": "Zadané údaje sa nezhodujú s našimi záznamami v databáze",
+    "noConnection": "Problém so sieťou, skontroluj si, prosím, internetové pripojenie"
   }
 }

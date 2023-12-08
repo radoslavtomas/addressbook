@@ -67,7 +67,7 @@ const Welcome = () => {
             size={{ base: 'xl', lg: '2xl' }}
             fontWeight="bold"
           >
-            {t('index.heroMessage')}
+            {t('indexes.heroMessage')}
           </Heading>
 
           <Flex gap="6" justifyContent={{ base: 'center', lg: 'start' }}>

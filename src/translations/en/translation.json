@@ -3,14 +3,20 @@
   "loginButton": "Login",
   "registerButton": "Register",
   "logoutButton": "Logout",
+  "contacts": "Contacts",
   "myContactsButton": "My contacts",
+  "addNewContact": "Add new contact",
+  "manageContact": "Manage contact",
+  "addNewAddress": "Add new address",
+  "delete": "Delete",
   "navigation": {
     "contacts": "My contacts",
     "addContact": "Add contact",
     "profile": "Profile"
   },
-  "index": {
-    "heroMessage": "Good old address book for online era to help you stay in touch with friends and family"
+  "indexes": {
+    "heroMessage": "Good old address book for online era to help you stay in touch with friends and family",
+    "contactsEmpty": "No contacts yet."
   },
   "registerForm": {
     "name": "Register",
@@ -163,6 +169,7 @@
   },
   "errors": {
     "registration": "Registration failed, please try again later.",
-    "login": "These credentials do not match our records"
+    "login": "These credentials do not match our records",
+    "noConnection": "There's a connection problem, please check your internet"
   }
 }

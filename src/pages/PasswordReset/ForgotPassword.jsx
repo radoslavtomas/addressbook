@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { forgotPassword } from '../../api/authApi.js'
 import { useTranslation } from 'react-i18next'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const ForgotPassword = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const toast = useToast()
   const { t } = useTranslation()
-  const resetUrl = 'http://localhost:5137'
+  const resetUrl = 'http://localhost:5173'
 
   const handleForgotPassword = async (data) => {
     console.log('YAYA')
@@ -23,14 +24,6 @@ const ForgotPassword = () => {
 
       if (!response.success) {
         setError(t('forgotPasswordForm.responseNoUser'))
-
-        toast({
-          description: t('forgotPasswordForm.responseError'),
-          status: 'error',
-          duration: 5000,
-          isClosable: true,
-        })
-
         return
       }
 
@@ -42,16 +35,16 @@ const ForgotPassword = () => {
         isClosable: true,
       })
 
-      // set up user in store
-      // navigate(namedUrls.getUser, {
-      //   state: {
-      //     redirectTo: namedUrls.contacts
-      //   }
-      // })
-    } catch (err) {
-      console.log(err)
-      setError(err.response.data.message)
-      // setError(t('forgotPasswordForm.responseError'))
+      navigate(namedUrls.login)
+    } catch (error) {
+      if (error.code === 'ERR_NETWORK') {
+        setError(t('errors.noConnection'))
+        return
+      }
+
+      console.log(error.response.data.message)
+      // setError(error.response.data.message)
+      setError(t('forgotPasswordForm.responseError'))
     }
   }
   return (

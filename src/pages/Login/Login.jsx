@@ -27,10 +27,14 @@ const Login = () => {
           redirectTo: namedUrls.contacts
         }
       })
-    } catch (err) {
-      console.log(err)
-      // setError(err.response.data.message)
-      setError(t('errors.login'))
+    } catch (error) {
+      // console.log(error)
+      if (error.code === 'ERR_NETWORK') {
+        setError(t('errors.noConnection'))
+      } else {
+        // console.log(error)
+        setError(t('errors.login'))
+      }
     }
   }
   return (

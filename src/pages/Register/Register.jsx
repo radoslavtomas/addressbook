@@ -3,49 +3,34 @@ import { Alert, AlertIcon, Box, Container } from '@chakra-ui/react'
 import { register } from '../../api/authApi.js'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const Register = () => {
-  const { t } = useTranslation()
   const [error, setError] = useState('')
+  const { t } = useTranslation()
+  const navigate = useNavigate()
 
   const handleRegistration = async (values) => {
     setError('')
 
     try {
-      const response = await register(values)
-      console.log(response)
+      await register(values)
+      navigate(namedUrls.login)
+    } catch (error) {
+      // console.log(error)
+      if (error.code === 'ERR_NETWORK') {
+        setError(t('errors.noConnection'))
+        return
+      }
 
-      // TODO: login redirect to /contacts page
-    } catch (err) {
-      console.log(err)
-      if (err.response.status === 422) {
-        setError(err.response.data.message)
+      if (error.response.status === 422) {
+        setError(error.response.data.message)
       } else {
         setError(t('errors.registration'))
       }
     }
   }
-  // const {
-  //   isLoading,
-  //   error,
-  //   data
-  // } = useSWR('/auth/register', register, {
-  //   onSuccess: data => console.log(data)
-  // })
-  //
-  // let content
-  //
-  // if (isLoading) {
-  //   content = <p>Loading...</p>
-  // }
-  //
-  // if (error) {
-  //   content = <p>{error.message}</p>
-  // }
-  //
-  // if (data) {
-  //   content = <p>Registered</p>
-  // }
 
   return (
     <Container maxW="container.md" pt={10}>

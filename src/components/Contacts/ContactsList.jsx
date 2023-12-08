@@ -11,8 +11,10 @@ import {
 import ContactItem from './ContactItem.jsx'
 import ContactAdd from './ContactAdd.jsx'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 const ContactsList = () => {
+  const { t } = useTranslation()
   const user = useSelector((state) => state.user.user)
 
   let content
@@ -21,7 +23,7 @@ const ContactsList = () => {
     content = (
       <Alert borderRadius={4} status="info">
         <AlertIcon/>
-        No contacts yet. Add new one now!
+        {t('indexes.contactsEmpty')}
       </Alert>
     )
   } else {
