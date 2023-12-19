@@ -96,6 +96,7 @@
       "password": "Nové heslo",
       "password_confirmation": "Potvrď nové heslo"
     },
+    "backHomeButton": "Späť na domovskú stránku",
     "savePasswordButton": "Zmeň heslo",
     "responseIncorrectPassword": "Nesprávne aktuálne heslo",
     "responseSuccessTitle": "Skvelé!",
@@ -104,7 +105,7 @@
     "We can't find a user with that email address.": "Zadanú emailovú adresu neevidujeme"
   },
   "forgotPasswordForm": {
-    "name": "Zmeniť zabudnuté heslo",
+    "name": "Zabudnuté heslo",
     "form": {
       "email": "Email"
     },
@@ -167,6 +168,7 @@
     }
   },
   "errors": {
+    "errorTitle": "Narazili sme na problém",
     "registration": "Registrácia sa nepodarila. Skúste to, prosím, neskôr.",
     "login": "Zadané údaje sa nezhodujú s našimi záznamami v databáze",
     "noConnection": "Problém so sieťou, skontroluj si, prosím, internetové pripojenie"

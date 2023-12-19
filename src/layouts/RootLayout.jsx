@@ -5,6 +5,7 @@ import SiteLogo from '../components/SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../components/ThemeToggleButton/ThemeToggleButton.jsx'
 import LanguageToggle from '../components/LanguageToggleButton/LanguageToggle.jsx'
 import NavigationDrawer from '../components/NavigationDrawer/NavigationDrawer.jsx'
+import AppError from '../components/AppError/AppError.jsx'
 import { useSelector } from 'react-redux'
 
 const variants = {
@@ -42,6 +43,7 @@ const RootLayout = () => {
         </Flex>
 
         <Box as={'main'} minHeight={'calc(100vh - 3.5em)'} bg={useColorModeValue('red.50', 'gray.800')}>
+          <AppError/>
           <Outlet/>
         </Box>
       </Box>

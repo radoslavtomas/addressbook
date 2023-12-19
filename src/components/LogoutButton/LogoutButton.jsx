@@ -26,7 +26,7 @@ const LogoutButton = () => {
       status: 'success',
       title: 'Logout successful',
       isClosable: true,
-      duration: 9000
+      duration: 3000
     })
 
     navigate(namedUrls.home)

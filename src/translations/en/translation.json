@@ -97,6 +97,7 @@
       "password": "New Password",
       "password_confirmation": "Confirm password"
     },
+    "backHomeButton": "Back home",
     "savePasswordButton": "Reset password",
     "responseIncorrectPassword": "The current password is incorrect",
     "responseSuccessTitle": "Success!",
@@ -105,7 +106,7 @@
     "We can't find a user with that email address.": "We can't find a user with that email address"
   },
   "forgotPasswordForm": {
-    "name": "Reset your password",
+    "name": "Forgotten password",
     "form": {
       "email": "Email"
     },
@@ -168,6 +169,7 @@
     }
   },
   "errors": {
+    "errorTitle": "Error!",
     "registration": "Registration failed, please try again later.",
     "login": "These credentials do not match our records",
     "noConnection": "There's a connection problem, please check your internet"

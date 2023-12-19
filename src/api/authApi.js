@@ -1,4 +1,5 @@
-import { axiosClient, baseURL } from './config/axiosClient.js'
+import { axiosClient } from './config/axiosClient.js'
+import { baseApiUrl } from '../config/config.js'
 
 export const register = async ({ name, email, password }) => {
   const response = await axiosClient.post('/register', { name, email, password })
@@ -10,7 +11,7 @@ export const getCsrfCookie = async () => {
   const response = await axiosClient({
     method: 'get',
     url: '/sanctum/csrf-cookie',
-    baseURL
+    baseURL: baseApiUrl
   })
 
   return response.data
@@ -21,7 +22,7 @@ export const login = async ({ email, password }) => {
   const response = await axiosClient({
     method: 'post',
     url: '/login',
-    baseURL,
+    baseURL: baseApiUrl,
     data: { email, password }
   })
 
@@ -33,7 +34,7 @@ export const logout = async () => {
   const response = await axiosClient({
     method: 'post',
     url: '/logout',
-    baseURL
+    baseURL: baseApiUrl
   })
 
   return response.data
@@ -42,7 +43,7 @@ export const logout = async () => {
 export const forgotPassword = async ({ email, reset_url }) => {
   const response = await axiosClient({
     method: 'POST',
-    url: '/forgot-passwordd',
+    url: '/forgot-password',
     data: { email, reset_url }
   })
 

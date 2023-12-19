@@ -1,4 +1,15 @@
-import { Box, Button, Center, FormControl, FormErrorMessage, FormLabel, Heading, Input } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  Input,
+  Text,
+  useColorModeValue
+} from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
@@ -6,7 +17,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import passwordRegex from '../../services/regex/password.js'
 import PropTypes from 'prop-types'
-import { useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
+import { namedUrls } from '../../routes/routesConfig.js'
 
 const ResetPasswordForm = ({ handleResetPassword }) => {
   const { t } = useTranslation()
@@ -125,6 +137,13 @@ const ResetPasswordForm = ({ handleResetPassword }) => {
 
           </form>
         </Box>
+      </Box>
+
+      <Box delay={0.2}>
+        <Center textTransform={'uppercase'}>
+          <Link to={namedUrls.login}><Text
+            color={useColorModeValue('orange.600', 'gray.400')}>{t('resetPasswordForm.backHomeButton')}</Text></Link>
+        </Center>
       </Box>
     </>
   )

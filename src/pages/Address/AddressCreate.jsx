@@ -1,16 +1,19 @@
 import AddressForm from '../../components/Forms/AddressForm.jsx'
-import { Alert, AlertIcon, Center, Container, Spinner, useToast } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Center, Container, Spinner, useToast } from '@chakra-ui/react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
 import { storeAddress } from '../../api/addressApi.js'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const AddressCreate = () => {
+  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [validContact, setValidContact] = useState(false)
-  const navigate = useNavigate()
   const { contactId } = useParams()
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const user = useSelector((state) => state.user.user)
   const toast = useToast()
 
@@ -22,14 +25,14 @@ const AddressCreate = () => {
     }
 
     setIsLoading(false)
-  }, [])
+  }, [contactId, user.contacts])
 
   const handleAddressStore = async (data) => {
+    setError('')
+    setIsLoading(true)
+
     try {
-      setIsLoading(true)
-      const response = await storeAddress(contactId, data)
-      setIsLoading(false)
-      console.log(response)
+      await storeAddress(contactId, data)
 
       toast({
         description: 'Your address has been successfully created',
@@ -44,9 +47,15 @@ const AddressCreate = () => {
         }
       })
     } catch (err) {
-      // TODO: handle error
-      console.log(err)
+      if (error.code === 'ERR_NETWORK') {
+        setError(t('errors.noConnection'))
+        return
+      }
+
+      setError(error.response.data.message)
     }
+
+    setIsLoading(false)
   }
 
   let content
@@ -68,6 +77,13 @@ const AddressCreate = () => {
 
   return (
     <Container maxW="container.md" pt={10}>
+      {error && <Box maxW="350px" mx="auto">
+        <Alert mb={6} borderRadius={4} status="error">
+          <AlertIcon/>
+          {error}
+        </Alert>
+      </Box>}
+      
       {content}
     </Container>
   )

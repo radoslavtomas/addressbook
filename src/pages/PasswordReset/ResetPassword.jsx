@@ -3,15 +3,18 @@ import { useState } from 'react'
 import ResetPasswordForm from '../../components/Forms/ResetPasswordForm.jsx'
 import { resetPassword } from '../../api/authApi.js'
 import { useTranslation } from 'react-i18next'
+import { namedUrls } from '../../routes/routesConfig.js'
+import { useNavigate } from 'react-router-dom'
 
 const ResetPassword = () => {
   const [error, setError] = useState('')
   const { t } = useTranslation()
   const toast = useToast()
+  const navigate = useNavigate()
 
   const handleResetPassword = async (data) => {
-    console.log('from handleee')
-    console.log(data)
+    setError('')
+
     try {
       const response = await resetPassword(data)
 
@@ -27,8 +30,15 @@ const ResetPassword = () => {
         duration: 5000,
         isClosable: true,
       })
+
+      navigate(namedUrls.login)
     } catch (error) {
-      console.log(error)
+      if (error.code === 'ERR_NETWORK') {
+        setError(t('errors.noConnection'))
+        return
+      }
+
+      setError(error.response.data.message)
     }
   }
 

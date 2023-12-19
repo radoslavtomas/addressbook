@@ -5,18 +5,16 @@ import { useNavigate } from 'react-router-dom'
 import { forgotPassword } from '../../api/authApi.js'
 import { useTranslation } from 'react-i18next'
 import { namedUrls } from '../../routes/routesConfig.js'
+import { passwordResetUrl } from '../../config/config.js'
 
 const ForgotPassword = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const toast = useToast()
   const { t } = useTranslation()
-  const resetUrl = 'http://localhost:5173'
 
   const handleForgotPassword = async (data) => {
-    console.log('YAYA')
-    data['reset_url'] = resetUrl
-    console.log(data)
+    data['reset_url'] = passwordResetUrl
     setError('')
 
     try {
@@ -42,7 +40,6 @@ const ForgotPassword = () => {
         return
       }
 
-      console.log(error.response.data.message)
       // setError(error.response.data.message)
       setError(t('forgotPasswordForm.responseError'))
     }

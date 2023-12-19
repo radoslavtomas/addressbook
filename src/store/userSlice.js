@@ -39,6 +39,10 @@ const sortContacts = contacts => {
   })
 }
 
-export const { logUserIn, logUserOut, setUpUser } = userSlice.actions
+export const {
+  logUserIn,
+  logUserOut,
+  setUpUser
+} = userSlice.actions
 
 export default userSlice.reducer

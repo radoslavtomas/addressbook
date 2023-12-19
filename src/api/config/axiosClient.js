@@ -1,11 +1,10 @@
 import axios from 'axios'
+import { baseApiUrl } from '../../config/config.js'
 
-export const baseURL = 'http://localhost:8000'
 export const apiPrefix = '/api/v1'
 
 export const axiosClient = axios.create({
-  // baseURL: 'https://snomapi.rdslv.com/api/v1',
-  baseURL: baseURL + apiPrefix,
+  baseURL: baseApiUrl + apiPrefix,
   withCredentials: true
 })
 
