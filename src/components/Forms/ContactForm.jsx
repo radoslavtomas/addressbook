@@ -32,9 +32,7 @@ const ContactForm = ({ contact, handleFormSubmit, mode }) => {
   const { t } = useTranslation()
 
   useEffect(() => {
-    console.log(contact)
     if (contact) {
-      console.log('effect')
       handleInitialValues()
     }
   }, [contact])

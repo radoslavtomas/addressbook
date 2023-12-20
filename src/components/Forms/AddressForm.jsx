@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { namedUrls } from '../../routes/routesConfig.js'
 
@@ -31,17 +31,12 @@ const AddressForm = ({ address, handleFormSubmit, mode }) => {
     country: '',
   })
   const { t, i18n } = useTranslation()
-  const { addressId, contactId } = useParams()
 
   useEffect(() => {
-    console.log(mode)
-    console.log(addressId)
-    console.log(contactId)
-    console.log(address)
     if (address) {
       handleInitialValues()
     }
-  }, [])
+  }, [address])
 
   const handleInitialValues = () => {
     let newInitialValues = { ...initialValues }
@@ -51,8 +46,6 @@ const AddressForm = ({ address, handleFormSubmit, mode }) => {
         newInitialValues[key] = address[key]
       }
     }
-
-    console.log(newInitialValues)
 
     setInitialValues(newInitialValues)
   }
@@ -69,7 +62,6 @@ const AddressForm = ({ address, handleFormSubmit, mode }) => {
       country: Yup.string().required(t('validation.country.required')),
     }),
     onSubmit: values => {
-      console.log(values)
       handleFormSubmit(values)
     }
   })

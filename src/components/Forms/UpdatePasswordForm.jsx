@@ -45,7 +45,6 @@ const UpdatePasswordForm = ({ handleUpdatePassword }) => {
         .required(t('validation.password.required'))
     }),
     onSubmit: async (values) => {
-      console.log(values)
       setIsLoading(true)
       await handleUpdatePassword(values)
       setIsLoading(false)

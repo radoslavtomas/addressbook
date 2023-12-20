@@ -24,7 +24,6 @@ const ProfileForm = ({ handleUpdateProfile }) => {
     }),
     onSubmit: values => {
       values['user_id'] = user.id
-      console.log(values)
       handleUpdateProfile(values)
     }
   })

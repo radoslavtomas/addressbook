@@ -51,7 +51,6 @@ const ResetPasswordForm = ({ handleResetPassword }) => {
     }),
     onSubmit: async (values) => {
       values['token'] = token
-      console.log(values)
       setIsLoading(true)
       await handleResetPassword(values)
       setIsLoading(false)

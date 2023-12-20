@@ -70,6 +70,7 @@
       "country": "Country",
       "selectCountry": "Select country"
     },
+    "addressFor": "Address for -",
     "createAddressButton": "Add address",
     "editAddressButton": "Edit address",
     "backToContacts": "Back to contacts",

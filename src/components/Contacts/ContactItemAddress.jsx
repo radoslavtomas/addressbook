@@ -45,7 +45,7 @@ const ContactItemAddress = ({ addresses, contactId }) => {
           />
 
           <Heading size="xs" textTransform="uppercase">
-            Address for {address.city}
+            {t('addressForm.addressFor') + ' ' + address.city}
           </Heading>
           <Text pt="2" fontSize="sm">{address.address_line_1}</Text>
           {address.address_line_2 && <Text pt="2" fontSize="sm">{address.address_line_2}</Text>}
