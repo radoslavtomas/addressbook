@@ -20,7 +20,7 @@ import ContactItemAddressDelete from './ContactItemAddressDelete.jsx'
 const ContactItemAddress = ({ addresses, contactId }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const getCountryName = (code) => {
     const country = countries.filter(country => country.code === code)
@@ -61,7 +61,7 @@ const ContactItemAddress = ({ addresses, contactId }) => {
               variant="link"
               rightIcon={<DeleteIcon/>}
             >
-              Delete
+              {t('addressForm.deleteAddressButton')}
             </Button>
 
             <Button
@@ -74,7 +74,7 @@ const ContactItemAddress = ({ addresses, contactId }) => {
                 contactId: contactId
               }))}
             >
-              Edit Address
+              {t('addressForm.editAddressButton')}
             </Button>
           </HStack>
         </Box>

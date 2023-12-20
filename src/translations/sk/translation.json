@@ -50,7 +50,12 @@
     },
     "createContactButton": "Pridaj kontakt",
     "editContactButton": "Uprav kontakt",
-    "backToContacts": "Späť na kontakty"
+    "backToContacts": "Späť na kontakty",
+    "deleteContactButton": "Vymaž konatkt",
+    "deleteContactFor": "Vymazať kontakt -",
+    "deleteContactConfirmation": "Si si istý/istá? Už to nepôjde vrátiť späť.",
+    "deleteFooterButton": "Vymaž",
+    "cancelFooterButton": "Zrušiť"
   },
   "addressForm": {
     "name_create": "Pridaj adresu",
@@ -66,17 +71,24 @@
     },
     "createAddressButton": "Pridaj adresu",
     "editAddressButton": "Uprav adresu",
-    "backToContacts": "Späť na kontakty"
+    "backToContacts": "Späť na kontakty",
+    "deleteAddressButton": "Vymaž adresu",
+    "deleteAddressFor": "Vymazať adresu -",
+    "deleteAddressConfirmation": "Si si istý/istá? Už to nepôjde vrátiť späť.",
+    "deleteFooterButton": "Vymaž",
+    "cancelFooterButton": "Zrušiť"
   },
   "profileForm": {
-    "name": "Účet",
+    "name": "Profil",
     "form": {
       "name": "Meno",
       "email": "Email"
     },
     "updateProfileButton": "Ulož zmeny",
     "backToContacts": "Späť na kontakty",
-    "cancel": "Zrušiť"
+    "cancel": "Zrušiť",
+    "passwordOutOfDate": "Heslo, ktoré vyšlo z módy?",
+    "updatePasswordButton": "Vymeň ho za nové"
   },
   "updatePasswordForm": {
     "name": "Zmeň heslo",
@@ -86,7 +98,7 @@
       "password_confirmation": "Potvrď nové heslo"
     },
     "savePasswordButton": "Ulož heslo",
-    "backToContacts": "Back to contacts",
+    "backToContacts": "Späť na kontakty",
     "responseIncorrectPassword": "Nesprávne aktuálne heslo"
   },
   "resetPasswordForm": {
@@ -168,9 +180,24 @@
     }
   },
   "errors": {
+    "unauthorised": "Neoprávnený prístup",
     "errorTitle": "Narazili sme na problém",
     "registration": "Registrácia sa nepodarila. Skúste to, prosím, neskôr.",
     "login": "Zadané údaje sa nezhodujú s našimi záznamami v databáze",
-    "noConnection": "Problém so sieťou, skontroluj si, prosím, internetové pripojenie"
+    "noConnection": "Problém so sieťou, skontroluj si, prosím, internetové pripojenie",
+    "errorPageHeading": "Kurník šopa!",
+    "errorPageDescription": "Ospravedlňujeme sa, nastala neočakávaná chyba.",
+    "notFound": "Je nám to ľúto, ale takúto stránku sme nenašli."
+  },
+  "toasts": {
+    "addressCreated": "Adresa bola úspešne uložená",
+    "addressDeleted": "Adresa bola úspešne vymazaná",
+    "addressUpdated": "Adresa bola úspešne upravená",
+    "contactCreated": "Kontakt bol úspešne uložený",
+    "contactUpdated": "Kontakt bol úspešne upravený",
+    "contactDeleted": "Kontakt bol úspečne vymazaný",
+    "logoutSuccessful": "Si odhlásený/odhlásená",
+    "passwordUpdated": "Heslo bolo úspešne upravené",
+    "profileUpdated": "Profil bol úspešne upravený"
   }
 }

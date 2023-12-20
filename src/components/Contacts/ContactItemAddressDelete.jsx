@@ -13,18 +13,25 @@ import PropTypes from 'prop-types'
 import { deleteAddress } from '../../api/addressApi.js'
 import { namedUrls } from '../../routes/routesConfig.js'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
+import { clearAppError, setAppError } from '../../store/errorSlice.js'
 
 const ContactItemAddressDelete = ({ addressId, contactId, addressCity, isOpen, onClose }) => {
   const cancelRef = useRef()
   const toast = useToast()
   const navigate = useNavigate()
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
 
   const handleDeleteAddress = async (addressId) => {
+    dispatch(clearAppError())
+
     try {
       await deleteAddress(contactId, addressId)
 
       toast({
-        description: 'The address has been successfully deleted',
+        description: t('toasts.addressDeleted'),
         status: 'success',
         duration: 5000,
         isClosable: true,
@@ -38,7 +45,12 @@ const ContactItemAddressDelete = ({ addressId, contactId, addressCity, isOpen, o
         }
       })
     } catch (error) {
-      console.log(error)
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: error.response.data.message
+      }))
+
+      onClose()
     }
   }
 
@@ -51,19 +63,19 @@ const ContactItemAddressDelete = ({ addressId, contactId, addressCity, isOpen, o
       <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
-            Delete address for {addressCity}
+            {t('addressForm.deleteAddressFor') + ' ' + addressCity}
           </AlertDialogHeader>
 
           <AlertDialogBody>
-            Are you sure? You cannot undo this action afterwards.
+            {t('addressForm.deleteAddressConfirmation')}
           </AlertDialogBody>
 
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose}>
-              Cancel
+              {t('addressForm.cancelFooterButton')}
             </Button>
             <Button colorScheme="red" onClick={() => handleDeleteAddress(addressId)} ml={3}>
-              Delete
+              {t('addressForm.deleteFooterButton')}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

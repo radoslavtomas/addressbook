@@ -1,25 +1,29 @@
-import { Alert, AlertIcon, Box, Container, useToast } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Container, useToast } from '@chakra-ui/react'
 import ResetPasswordForm from '../../components/Forms/ResetPasswordForm.jsx'
 import { resetPassword } from '../../api/authApi.js'
 import { useTranslation } from 'react-i18next'
 import { namedUrls } from '../../routes/routesConfig.js'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { clearAppError, setAppError } from '../../store/errorSlice.js'
 
 const ResetPassword = () => {
-  const [error, setError] = useState('')
   const { t } = useTranslation()
   const toast = useToast()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleResetPassword = async (data) => {
-    setError('')
+    dispatch(clearAppError())
 
     try {
       const response = await resetPassword(data)
 
       if (!response.success) {
-        setError(t(`resetPasswordForm.${response.message}`))
+        dispatch(setAppError({
+          code: null,
+          errorMessage: t(`resetPasswordForm.${response.message}`)
+        }))
         return
       }
 
@@ -33,24 +37,15 @@ const ResetPassword = () => {
 
       navigate(namedUrls.login)
     } catch (error) {
-      if (error.code === 'ERR_NETWORK') {
-        setError(t('errors.noConnection'))
-        return
-      }
-
-      setError(error.response.data.message)
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: error.response.data.message
+      }))
     }
   }
 
   return (
     <Container maxW="container.md" pt={10}>
-      {error && <Box maxW="350px" mx="auto">
-        <Alert mb={6} borderRadius={4} status="error">
-          <AlertIcon/>
-          {error}
-        </Alert>
-      </Box>}
-
       <ResetPasswordForm handleResetPassword={handleResetPassword}/>
     </Container>
   )

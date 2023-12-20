@@ -11,8 +11,7 @@ import {
   Heading,
   Input,
   Text,
-  useColorModeValue,
-  useToast
+  useColorModeValue
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
@@ -21,7 +20,6 @@ import PropTypes from 'prop-types'
 
 const ForgotPasswordForm = ({ handleForgotPassword }) => {
   const { t } = useTranslation()
-  const toast = useToast()
 
   const formik = useFormik({
     initialValues: {
@@ -31,7 +29,6 @@ const ForgotPasswordForm = ({ handleForgotPassword }) => {
       email: Yup.string().email(t('validation.email.invalidFormat')).required(t('validation.email.required')),
     }),
     onSubmit: values => {
-      console.log(values)
       handleForgotPassword(values)
     }
   })
@@ -50,11 +47,6 @@ const ForgotPasswordForm = ({ handleForgotPassword }) => {
 
       <Box delay={0.1} mb={6}>
         <Box maxW="350px" mx="auto">
-
-          {/*<Alert mb={6} borderRadius={4} status="error">*/}
-          {/*  <AlertIcon/>*/}
-          {/*  {t('forgotPasswordForm.responseError')}*/}
-          {/*</Alert>*/}
 
           <form onSubmit={formik.handleSubmit}>
             <FormControl mb={4} isInvalid={formik.touched.email && formik.errors.email}>

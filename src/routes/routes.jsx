@@ -16,6 +16,7 @@ import GetUser from '../pages/GetUser/GetUser.jsx'
 
 import { namedUrls } from './routesConfig.js'
 import ResetPassword from '../pages/PasswordReset/ResetPassword.jsx'
+import NotFound from '../pages/Error/NotFound.jsx'
 
 const routes = [
   {
@@ -74,6 +75,10 @@ const routes = [
       {
         path: namedUrls.addressEdit,
         element: <PrivateRoute><AddressEdit/></PrivateRoute>
+      },
+      { // catch all, not found
+        path: '*',
+        element: <NotFound/>
       }
     ]
   },

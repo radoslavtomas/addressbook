@@ -24,7 +24,7 @@ const LogoutButton = () => {
     // feedback user
     toast({
       status: 'success',
-      title: 'Logout successful',
+      title: t('toasts.logoutSuccessful'),
       isClosable: true,
       duration: 3000
     })

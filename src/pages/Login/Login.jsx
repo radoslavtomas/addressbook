@@ -29,7 +29,10 @@ const Login = () => {
         }
       })
     } catch (error) {
-      dispatch(setAppError({ code: error.code, errorMessage: t('errors.login') }))
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: t('errors.login')
+      }))
     }
   }
   return (

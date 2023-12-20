@@ -1,14 +1,14 @@
 import ContactForm from '../../components/Forms/ContactForm.jsx'
-import { Alert, AlertIcon, Box, Center, Container, Spinner, useToast } from '@chakra-ui/react'
-import { useSelector } from 'react-redux'
+import { Alert, AlertIcon, Center, Container, Spinner, useToast } from '@chakra-ui/react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateContact } from '../../api/contactApi.js'
 import { namedUrls } from '../../routes/routesConfig.js'
 import { useTranslation } from 'react-i18next'
+import { clearAppError, setAppError } from '../../store/errorSlice.js'
 
 const ContactsEdit = () => {
-  const [error, setError] = useState('')
   const { t } = useTranslation()
   const navigate = useNavigate()
   const toast = useToast()
@@ -17,6 +17,7 @@ const ContactsEdit = () => {
   const [isLoading, setIsLoading] = useState(true)
   const user = useSelector((state) => state.user.user)
   const { contactId } = useParams()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setIsLoading(true)
@@ -28,14 +29,14 @@ const ContactsEdit = () => {
   }, [contactId, user.contacts])
 
   const handleContactEdit = async (data) => {
-    setError('')
+    dispatch(clearAppError())
     setIsLoading(true)
 
     try {
       await updateContact(contactId, data)
 
       toast({
-        description: 'Your contact has been successfully updated',
+        description: t('toasts.contactUpdated'),
         status: 'success',
         duration: 5000,
         isClosable: true,
@@ -47,12 +48,10 @@ const ContactsEdit = () => {
         }
       })
     } catch (error) {
-      if (error.code === 'ERR_NETWORK') {
-        setError(t('errors.noConnection'))
-        return
-      }
-
-      setError(error.response.data.message)
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: error.response.data.message
+      }))
     }
 
     setIsLoading(false)
@@ -66,7 +65,7 @@ const ContactsEdit = () => {
     content = (
       <Alert status="error">
         <AlertIcon/>
-        Unauthorised
+        {t('errors.unauthorised')}
       </Alert>
     )
   }
@@ -77,13 +76,6 @@ const ContactsEdit = () => {
 
   return (
     <Container maxW="container.md" py={10}>
-      {error && <Box maxW="350px" mx="auto">
-        <Alert mb={6} borderRadius={4} status="error">
-          <AlertIcon/>
-          {error}
-        </Alert>
-      </Box>}
-
       {content}
     </Container>
   )

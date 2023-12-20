@@ -51,7 +51,12 @@
     },
     "createContactButton": "Add contact",
     "editContactButton": "Edit contact",
-    "backToContacts": "Back to contacts"
+    "backToContacts": "Back to contacts",
+    "deleteContactButton": "Delete contact",
+    "deleteContactFor": "Delete contact for",
+    "deleteContactConfirmation": "Are you sure? You cannot undo this action afterwards.",
+    "deleteFooterButton": "Delete",
+    "cancelFooterButton": "Cancel"
   },
   "addressForm": {
     "name_create": "Add address",
@@ -67,7 +72,12 @@
     },
     "createAddressButton": "Add address",
     "editAddressButton": "Edit address",
-    "backToContacts": "Back to contacts"
+    "backToContacts": "Back to contacts",
+    "deleteAddressButton": "Delete address",
+    "deleteAddressFor": "Delete address for",
+    "deleteAddressConfirmation": "Are you sure? You cannot undo this action afterwards.",
+    "deleteFooterButton": "Delete",
+    "cancelFooterButton": "Cancel"
   },
   "profileForm": {
     "name": "Profile",
@@ -77,7 +87,9 @@
     },
     "updateProfileButton": "Update profile",
     "backToContacts": "Back to contacts",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "passwordOutOfDate": "Is your password out of date?",
+    "updatePasswordButton": "Update password"
   },
   "updatePasswordForm": {
     "name": "Update Password",
@@ -169,9 +181,24 @@
     }
   },
   "errors": {
+    "unauthorised": "Unauthorised",
     "errorTitle": "Error!",
     "registration": "Registration failed, please try again later.",
     "login": "These credentials do not match our records",
-    "noConnection": "There's a connection problem, please check your internet"
+    "noConnection": "There's a connection problem, please check your internet",
+    "errorPageHeading": "Oh dear!",
+    "errorPageDescription": "Sorry, an unexpected error has occurred.",
+    "notFound": "Sorry, we couldn't find this page."
+  },
+  "toasts": {
+    "addressCreated": "Your address has been successfully created",
+    "addressDeleted": "The address has been successfully deleted",
+    "addressUpdated": "Your address has been successfully updated",
+    "contactCreated": "Your contact has been successfully created",
+    "contactUpdated": "Your contact has been successfully updated",
+    "contactDeleted": "The contact has been successfully deleted",
+    "logoutSuccessful": "Logout successful",
+    "passwordUpdated": "Your password has been successfully updated",
+    "profileUpdated": "Your profile has been successfully updated"
   }
 }

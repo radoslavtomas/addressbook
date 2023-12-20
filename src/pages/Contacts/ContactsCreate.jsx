@@ -1,21 +1,30 @@
 import ContactForm from '../../components/Forms/ContactForm.jsx'
-import { Alert, AlertIcon, Box, Container } from '@chakra-ui/react'
+import { Container, useToast } from '@chakra-ui/react'
 import { storeContact } from '../../api/contactApi.js'
 import { useNavigate } from 'react-router-dom'
 import { namedUrls } from '../../routes/routesConfig.js'
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { clearAppError, setAppError } from '../../store/errorSlice.js'
 import { useTranslation } from 'react-i18next'
 
 const ContactsCreate = () => {
-  const [error, setError] = useState('')
-  const { t } = useTranslation()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const toast = useToast()
+  const { t } = useTranslation()
 
   const handleContactStore = async (data) => {
-    setError('')
+    dispatch(clearAppError())
 
     try {
       await storeContact(data)
+
+      toast({
+        description: t('toasts.contactCreated'),
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      })
 
       navigate(namedUrls.getUser, {
         state: {
@@ -23,24 +32,15 @@ const ContactsCreate = () => {
         }
       })
     } catch (error) {
-      if (error.code === 'ERR_NETWORK') {
-        setError(t('errors.noConnection'))
-        return
-      }
-
-      setError(error.response.data.message)
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: error.response.data.message
+      }))
     }
   }
 
   return (
     <Container maxW="container.md" py={10}>
-      {error && <Box maxW="350px" mx="auto">
-        <Alert mb={6} borderRadius={4} status="error">
-          <AlertIcon/>
-          {error}
-        </Alert>
-      </Box>}
-
       <ContactForm mode="create" handleFormSubmit={handleContactStore}/>
     </Container>
   )

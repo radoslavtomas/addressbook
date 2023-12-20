@@ -1,10 +1,12 @@
 import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, CloseButton, Flex, Spacer } from '@chakra-ui/react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { clearAppError } from '../../store/errorSlice.js'
 
 const AppError = () => {
   const error = useSelector((state) => state.error.error)
   const { t } = useTranslation()
+  const dispatch = useDispatch()
 
   return error ? (
     <Flex mt={14} maxW="350px" mx="auto">
@@ -22,7 +24,7 @@ const AppError = () => {
           position="relative"
           right={-1}
           top={-1}
-          onClick={() => console.log('set up redux call')}
+          onClick={() => dispatch(clearAppError())}
         />
       </Alert>
     </Flex>

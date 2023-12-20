@@ -1,10 +1,12 @@
 import { Alert, AlertIcon, Center, Container, Spinner, useToast } from '@chakra-ui/react'
 import AddressForm from '../../components/Forms/AddressForm.jsx'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { updateAddress } from '../../api/addressApi.js'
 import { namedUrls } from '../../routes/routesConfig.js'
+import { useTranslation } from 'react-i18next'
+import { clearAppError, setAppError } from '../../store/errorSlice.js'
 
 const AddressEdit = () => {
   const [address, setAddress] = useState(null)
@@ -14,6 +16,8 @@ const AddressEdit = () => {
   const user = useSelector((state) => state.user.user)
   const { addressId, contactId } = useParams()
   const toast = useToast()
+  const { t } = useTranslation()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const contact = user.contacts.filter(item => item.id === parseInt(contactId))
@@ -31,17 +35,18 @@ const AddressEdit = () => {
     }
 
     setIsLoading(false)
-  }, [])
+  }, [addressId, contactId, user.contacts])
 
   const handleAddressEdit = async (data) => {
+    dispatch(clearAppError())
+
     try {
       setIsLoading(true)
-      const response = await updateAddress(contactId, addressId, data)
+      await updateAddress(contactId, addressId, data)
       setIsLoading(false)
-      console.log(response)
 
       toast({
-        description: 'Your address has been successfully updated',
+        description: t('toasts.addressUpdated'),
         status: 'success',
         duration: 5000,
         isClosable: true,
@@ -52,10 +57,11 @@ const AddressEdit = () => {
           redirectTo: namedUrls.contacts
         }
       })
-    } catch (err) {
-      // TODO: handle error
-      console.log('We have error')
-      console.log(err)
+    } catch (error) {
+      dispatch(setAppError({
+        code: error.code,
+        errorMessage: error.response.data.message
+      }))
     }
   }
 
@@ -67,7 +73,7 @@ const AddressEdit = () => {
     content = (
       <Alert status="error">
         <AlertIcon/>
-        Unauthorised
+        {t('errors.unauthorised')}
       </Alert>
     )
   }
