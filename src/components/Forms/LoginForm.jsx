@@ -110,8 +110,6 @@ const LoginForm = ({ handleLogin }) => {
             color={useColorModeValue('orange.600', 'gray.400')}>{t('loginForm.resetHere')}</Text></Link>
         </Center>
       </Box>
-
-      <a href="https://storyset.com/work">Work illustrations by Storyset</a>
     </>
   )
 }

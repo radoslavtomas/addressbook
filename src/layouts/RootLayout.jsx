@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Box, Flex, HStack, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, HStack, Text, useColorModeValue, VStack } from '@chakra-ui/react'
 import { Link, Outlet } from 'react-router-dom'
 import SiteLogo from '../components/SiteLogo/SiteLogo.jsx'
 import ThemeToggleButton from '../components/ThemeToggleButton/ThemeToggleButton.jsx'
@@ -26,7 +26,7 @@ const RootLayout = () => {
       transition={{ duration: 0.4, type: 'easeInOut' }}
       style={{ position: 'relative' }}
     >
-      <Box minHeight={'100vh'}>
+      <Box pb={10} bg={useColorModeValue('red.50', 'gray.800')}>
         <Flex as={'header'} h={'3.5em'} bg={useColorModeValue('orange.100', 'gray.900')} px={4} py={2}
               boxShadow="sm"
               alignItems={'center'}
@@ -42,11 +42,25 @@ const RootLayout = () => {
           </HStack>
         </Flex>
 
-        <Box as={'main'} minHeight={'calc(100vh - 3.5em)'} bg={useColorModeValue('red.50', 'gray.800')}>
+        <Box as={'main'} minHeight={'calc(100vh - 6em)'}>
           <AppError/>
           <Outlet/>
         </Box>
       </Box>
+
+      <Flex as={'footer'} bg={useColorModeValue('orange.100', 'gray.900')} px={4} py={6}
+            boxShadow="sm"
+            alignItems={'center'}
+            justifyContent={'center'}>
+        <VStack>
+          <Text as="p" fontSize="sm">&copy; Radoslav Tomas</Text>
+          <a href="https://storyset.com/work"
+             rel="noreferrer"
+             target="_blank">
+            <Text fontSize="xs">Work illustrations by Storyset</Text>
+          </a>
+        </VStack>
+      </Flex>
     </motion.div>
   )
 }
