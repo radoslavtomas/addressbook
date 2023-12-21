@@ -5,5 +5,5 @@ export const passwordResetUrl =
 
 export const baseApiUrl =
   process.env.NODE_ENV === 'production'
-    ? 'https://snomapi.rdslv.com'
+    ? 'https://api.bearaddress.com'
     : 'http://localhost:8000'
